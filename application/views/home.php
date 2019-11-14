@@ -75,6 +75,26 @@
     }
 </style>
 
+<?php if (isset($this->session->error)) { ?>
+    
+<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
+    <div class="toast" style="position: absolute; top: 0; right: 0;">
+        <div class="toast-header">
+            <!-- <img src="" class="rounded mr-2" alt=""> -->
+            <strong class="mr-auto">Bootstrap</strong>
+            <!-- <small>11 mins ago</small> -->
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            <?php echo $this->session->error; ?>
+        </div>
+    </div>
+</div>
+
+<?php } ?>
+
 <body style="background-color:#d9d9d9" data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
     <div class="sidebar">
@@ -183,7 +203,8 @@
                 <div class="row align-items-center">
                     <div class="col-12 text-center">
                         <a href="index.html" class="site-logo">
-                            <img src="<?php //echo base_url('assets/images/logo.png') ?>" alt="Image" class="img-fluid">
+                            <img src="<?php //echo base_url('assets/images/logo.png') 
+                                        ?>" alt="Image" class="img-fluid">
                         </a>
                     </div>
                     <a href="#" class="mx-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a>
@@ -198,9 +219,7 @@
             <div class="col-md-8">
                 <?php if (!isset($user)) { ?>
                     <span class="sub-title">Welcome</span>
-                <?php } else { if ($user ) {
-                    # code...
-                } ?>
+                <?php } else { ?>
                     <span class="sub-title">Welcome, <?php echo $user ?></span>
                 <?php } ?>
 
@@ -353,7 +372,7 @@
     <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/jquery-migrate-3.0.1.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/jquery-ui.js') ?>"></script>
-    <script src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>    
+    <script src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/owl.carousel.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/jquery.stellar.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/jquery.countdown.min.js') ?>"></script>
