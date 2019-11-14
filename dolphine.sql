@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2019 at 02:48 PM
+-- Generation Time: Nov 14, 2019 at 02:15 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -25,12 +25,36 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `produk`
+--
+
+CREATE TABLE `produk` (
+  `id_produk` int(11) NOT NULL,
+  `foto` varchar(50) NOT NULL,
+  `nama_barang` varchar(100) NOT NULL,
+  `varian_barang` varchar(50) NOT NULL,
+  `harga` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `produk`
+--
+
+INSERT INTO `produk` (`id_produk`, `foto`, `nama_barang`, `varian_barang`, `harga`) VALUES
+(1, 'gambar_1.jpg', 'Dholpine Wangi Jeruk', 'Jeruk', 5000),
+(2, 'gambar_2.jpg', 'Dholpine Wangi Apel', 'Apel', 4500),
+(3, 'gambar_3.jpg', 'Dholpine Wangi Lavender', 'Lavender', 4500);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `transaksi`
 --
 
 CREATE TABLE `transaksi` (
   `id_transaksi` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
+  `id_produk` int(11) NOT NULL,
   `jumlah_pembelian` int(11) NOT NULL,
   `kode_unik` int(11) NOT NULL,
   `total_biaya` int(11) NOT NULL,
@@ -45,7 +69,7 @@ CREATE TABLE `transaksi` (
 
 CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
-  `username` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `nama` varchar(30) NOT NULL,
   `alamat` varchar(256) NOT NULL,
@@ -54,8 +78,22 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `email`, `password`, `nama`, `alamat`, `no_hp`, `level`) VALUES
+(1, 'a@a.com', 'a', 'aaaaaaa', 'aaaaaa', '1111111', 2),
+(2, 'admin@admin.com', 'admin', 'Administrator', '', '', 1);
+
+--
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `produk`
+--
+ALTER TABLE `produk`
+  ADD PRIMARY KEY (`id_produk`);
 
 --
 -- Indexes for table `transaksi`
@@ -74,6 +112,11 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `produk`
+--
+ALTER TABLE `produk`
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
@@ -82,7 +125,7 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
