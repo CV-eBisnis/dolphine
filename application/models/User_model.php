@@ -6,27 +6,27 @@ class User_model extends CI_Model
 {
     public function insert($param)
     {
-        return $this->db->insert('User', $param);
+        return $this->db->insert('user', $param);
     }
 
-    public function select(Type $var = null)
+    public function select()
     {
-        # code...
+        return $this->db->get('user')->result();
     }
 
     public function select_where($param)
     {
-        return $this->db->get_where('User', $param)->result();
+        return $this->db->get_where('user', $param)->result();
     }
 
-    public function update(Type $var = null)
+    public function update($param, $id)
     {
-        # code...
+        return $this->db->update('user', $param, $id);
     }
 
-    public function delete(Type $var = null)
+    public function delete($id)
     {
-        # code...
+        return $this->db->delete('user', $id);
     }
 }
 

@@ -37,19 +37,23 @@ class Home extends CI_Controller
             if ($this->session->log == 'admin') {
                 redirect('admin');
             } else {
-                $this->load->view('home');
+                redirect('home');
             }
         }
         else 
         {
             $this->session->set_flashdata('error', 'User Tidak Ditemukan!');
-            $this->load->view('home');
+            redirect('home');
         }
     }
 
     public function logout()
     {
-        # code...
+        $this->session->unset_userdata('log');
+        $this->session->unset_userdata('id_user');
+        $this->session->unset_userdata('user');
+        
+        redirect('home');        
     }
 
     public function daftar()
