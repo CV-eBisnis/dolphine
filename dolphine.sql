@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2019 at 02:15 PM
+-- Generation Time: Nov 29, 2019 at 03:38 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -30,20 +30,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `produk` (
   `id_produk` int(11) NOT NULL,
-  `foto` varchar(50) NOT NULL,
-  `nama_barang` varchar(100) NOT NULL,
-  `varian_barang` varchar(50) NOT NULL,
-  `harga` int(11) NOT NULL
+  `foto_produk` varchar(50) NOT NULL,
+  `nama_produk` varchar(100) NOT NULL,
+  `varian_produk` varchar(50) NOT NULL,
+  `harga_produk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `produk`
 --
 
-INSERT INTO `produk` (`id_produk`, `foto`, `nama_barang`, `varian_barang`, `harga`) VALUES
-(1, 'gambar_1.jpg', 'Dholpine Wangi Jeruk', 'Jeruk', 5000),
-(2, 'gambar_2.jpg', 'Dholpine Wangi Apel', 'Apel', 4500),
-(3, 'gambar_3.jpg', 'Dholpine Wangi Lavender', 'Lavender', 4500);
+INSERT INTO `produk` (`id_produk`, `foto_produk`, `nama_produk`, `varian_produk`, `harga_produk`) VALUES
+(1, 'gambar_1.png', 'Dholpine Wangi Jeruk', 'Jeruk', 5000),
+(2, 'gambar_2.png', 'Dholpine Wangi Apel', 'Apel', 4500),
+(3, 'gambar_3.png', 'Dholpine Wangi Lavender', 'Lavender', 4500);
 
 -- --------------------------------------------------------
 
@@ -82,8 +82,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `email`, `password`, `nama`, `alamat`, `no_hp`, `level`) VALUES
-(1, 'a@a.com', 'a', 'aaaaaaa', 'aaaaaa', '1111111', 2),
-(2, 'admin@admin.com', 'admin', 'Administrator', '', '', 1);
+(2, 'admin@admin.com', 'adminadmin', 'Administrator', '', '', 1),
+(3, 'awang@baqy.com', 'awangbaqy', 'Awang Baqy', 'Malang', '08123456789', 2);
 
 --
 -- Indexes for dumped tables
