@@ -5,7 +5,9 @@ class Home extends CI_Controller
 {
 	public function index()
 	{
-		$this->load->view('home');
+        $data['produk'] = $this->Produk_model->select();
+
+		$this->load->view('home', $data);
     }
     
     public function login()
@@ -13,10 +15,10 @@ class Home extends CI_Controller
         $email = $this->input->post('email');
         $pass = $this->input->post('password');
 
-        $param = array(
+        $param = [
             'email'     => $email, 
             'password'  => $pass
-        );
+        ];
 
         $data = $this->User_model->select_where($param);
         
@@ -24,17 +26,12 @@ class Home extends CI_Controller
         {
             foreach ($data as $d) 
             {
-                if ($d->level == 1) {
-                    $this->session->set_userdata('log', 'admin');
-                } else {
-                    $this->session->set_userdata('log', 'user');
-                }
-
                 $this->session->set_userdata('id_user', $d->id_user);
                 $this->session->set_userdata('user', $d->nama);
+                $this->session->set_userdata('level', $d->level);
             }
 
-            if ($this->session->log == 'admin') {
+            if ($this->session->level == 1) {
                 redirect('admin');
             } else {
                 redirect('home');
@@ -42,7 +39,7 @@ class Home extends CI_Controller
         }
         else 
         {
-            $this->session->set_flashdata('error', 'User Tidak Ditemukan!');
+            $this->session->set_flashdata('notif', 'User Tidak Ditemukan!');
             redirect('home');
         }
     }
@@ -58,17 +55,19 @@ class Home extends CI_Controller
 
     public function daftar()
     {
-        $nama = $this->input->post('nama');
-        $email = $this->input->post('email');
-        $pass = $this->input->post('password');
-
-        $param = array(
-            'nama'      => $nama,
-            'email'     => $email, 
-            'password'  => $pass,
+        $data = [
+            'nama'      => $this->input->post('nama'),
+            'email'     => $this->input->post('email'), 
+            'password'  => $this->input->post('password'),
             'level'     => 2
-        );
+        ];
 
-        $data = $this->User_model->insert($param);
+        if ($this->User_model->insert($data)) {
+            $this->session->set_flashdata('notif', 'Tambah User Berhasil!');
+        } else {
+            $this->session->set_flashdata('notif', 'Tambah User Gagal!');
+        }
+
+        redirect('home');
     }
 }
