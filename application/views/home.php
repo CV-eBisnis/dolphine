@@ -27,6 +27,7 @@
     <link href="<?= base_url('assets/css/jquery.mb.YTPlayer.min.css') ?>"" media=" all" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/w3css.css') ?>">
 
 </head>
 
@@ -77,11 +78,15 @@
 
 <body style="background-color:#d9d9d9" data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
-    <div class="sidebar">
-        <a href="" data-toggle="modal" data-target="#modal_login">Login</a>
-        <a href="<?= base_url() ?>">Beranda</a>
+    <!-- <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+        <button onclick="w3_close()" class="w3-bar-item w3-large">DHOLPINE &times;</button>
+        <a href="" data-toggle="modal" data-target="#modal_login" class="w3-bar-item w3-button">Login</a>
+        <a href="<?= base_url() ?>" class="w3-bar-item w3-button">Beranda</a>
         <a href=""></a>
     </div>
+    <div class="w3-teal">
+        <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
+    </div> -->
 
     <!-- Modal Login -->
     <div class="modal fade" id="modal_login" tabindex="-1" role="dialog" aria-hidden="true">
@@ -195,16 +200,16 @@
 
     </div>
 
-    <div class="intro-section container" style="background-image: url('<?= base_url('assets/images/gambar.jpeg') ?>');">
+    <div class="intro-section container" style="background-image: url('<?= base_url('assets/images/gambar.jpg') ?>');">
         <div class="row justify-content-center text-center align-items-center">
             <div class="col-md-8">
                 <?php if (!isset($user)) { ?>
                     <span class="sub-title">Welcome</span>
                 <?php } else { ?>
-                    <span class="sub-title">Welcome, <?= $user ?></span>
+                    <span class="sub-title">dfaZ, <?= $user ?></span>
                 <?php } ?>
 
-                <h1>Dholpine For Everyone</h1>
+                <h1>Obat Nyamuk Dholpine</h1>
             </div>
         </div>
     </div>
@@ -266,10 +271,10 @@
 
                 <?php } ?>
                 
-                <div class="col-lg-4 col-md-6 align-self-center">
+                <!-- <div class="col-lg-4 col-md-6 align-self-center">
 
                     <div class="wine_v_1 text-center pb-4">
-                        <a href="shop-single.html" class="thumbnail d-block mb-4"><img src="<?= base_url('assets/images/1.png') ?>" alt="Image" class="img-fluid"></a>
+                        <a href="shop-single.html" class="thumbnail d-block mb-4"><img src="<?= base_url('assets/images/gambar_1.png') ?>" alt="Image" class="img-fluid"></a>
                         <div>
                             <h3 class="heading mb-1"><a href="#">Dholpine Wangi Jeruk</a></h3>
                             <span class="price">Rp5.000,00</span>
@@ -297,7 +302,7 @@
 
                 <div class="col-lg-4 col-md-6 align-self-center">
                     <div class="wine_v_1 text-center pb-4">
-                        <a href="shop-single.html" class="thumbnail d-block mb-4"><img src="<?= base_url('assets/images/2.png') ?>" alt="Image" class="img-fluid"></a>
+                        <a href="shop-single.html" class="thumbnail d-block mb-4"><img src="<?= base_url('assets/images/gambar_2.png') ?>" alt="Image" class="img-fluid"></a>
                         <div>
                             <h3 class="heading mb-1"><a href="#">Dholpine Wangi Apel</a></h3>
                             <span class="price">Rp4.500,00</span>
@@ -324,7 +329,7 @@
 
                 <div class="col-lg-4 col-md-6 align-self-center">
                     <div class="wine_v_1 text-center pb-4">
-                        <a href="shop-single.html" class="thumbnail d-block mb-4"><img src="<?= base_url('assets/images/3.png') ?>" alt="Image" class="img-fluid"></a>
+                        <a href="shop-single.html" class="thumbnail d-block mb-4"><img src="<?= base_url('assets/images/gambar_3.png') ?>" alt="Image" class="img-fluid"></a>
                         <div>
                             <h3 class="heading mb-1"><a href="#">Dholpine Wangi Lavender</a></h3>
                             <span class="price">Rp4.500,00</span>
@@ -345,7 +350,7 @@
                             </div>
 
                             <a href="#" class="btn add"><span class="icon-shopping-bag mr-3"></span> Add to Cart</a>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
@@ -409,6 +414,9 @@
     <script src="<?= base_url('assets/js/jquery.fancybox.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/jquery.sticky.js') ?>"></script>
     <script src="<?= base_url('assets/js/jquery.mb.YTPlayer.min.js') ?>"></script>
+    <script> function w3_open() { document.getElementById("mySidebar").style.display = "block"; }
+    function w3_close() {document.getElementById("mySidebar").style.display = "none";}
+</script>
 
     <script src="<?= base_url('assets/js/main.js') ?>"></script>
 
