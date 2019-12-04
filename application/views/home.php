@@ -80,7 +80,7 @@
     <div class="sidebar">
         <a href="" data-toggle="modal" data-target="#modal_login">Login</a>
         <a href="<?= base_url() ?>">Beranda</a>
-        <a href=""></a>
+        <a href="" data-toggle="modal" data-target="#modal_keranjang">Keranjang</a>
     </div>
 
     <!-- Modal Login -->
@@ -167,6 +167,49 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="modal_keranjang" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Keranjang Belanja</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <table class="table table-striped table-inverse table-responsive">
+                            <thead class="thead-inverse">
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Produk</th>
+                                    <th>Jumlah</th>
+                                    <th>Harga</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row"></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td scope="row"></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="site-wrap">
 
         <div class="site-mobile-menu site-navbar-target">
@@ -236,7 +279,7 @@
                             <h3 class="heading-2"><a href="#"><?= $p->nama_produk ?></a></h3>
                             <span class="price d-block">Rp. <?= number_format($p->harga_produk,0,",","."); ?>,00</span>
                             <br>
-                            <a href="#" class="btn add" data-toggle="modal" data-target="#modal_beli"><span class="icon-shopping-bag mr-3"></span> Beli</a>
+                            <a href="#" class="btn add" onclick="return beli(<?= $p->id_produk ?>)"><span class="icon-shopping-bag mr-3"></span> Beli</a>
 
                         </div>
                     </div>
@@ -266,10 +309,10 @@
 
                 <?php } ?>
                 
-                <div class="col-lg-4 col-md-6 align-self-center">
+                <!-- <div class="col-lg-4 col-md-6 align-self-center">
 
                     <div class="wine_v_1 text-center pb-4">
-                        <a href="shop-single.html" class="thumbnail d-block mb-4"><img src="<?= base_url('assets/images/1.png') ?>" alt="Image" class="img-fluid"></a>
+                        <a href="shop-single.html" class="thumbnail d-block mb-4"><img src="<?= base_url('assets/images/gambar_1.png') ?>" alt="Image" class="img-fluid"></a>
                         <div>
                             <h3 class="heading mb-1"><a href="#">Dholpine Wangi Jeruk</a></h3>
                             <span class="price">Rp5.000,00</span>
@@ -297,7 +340,7 @@
 
                 <div class="col-lg-4 col-md-6 align-self-center">
                     <div class="wine_v_1 text-center pb-4">
-                        <a href="shop-single.html" class="thumbnail d-block mb-4"><img src="<?= base_url('assets/images/2.png') ?>" alt="Image" class="img-fluid"></a>
+                        <a href="shop-single.html" class="thumbnail d-block mb-4"><img src="<?= base_url('assets/images/gambar_2.png') ?>" alt="Image" class="img-fluid"></a>
                         <div>
                             <h3 class="heading mb-1"><a href="#">Dholpine Wangi Apel</a></h3>
                             <span class="price">Rp4.500,00</span>
@@ -324,7 +367,7 @@
 
                 <div class="col-lg-4 col-md-6 align-self-center">
                     <div class="wine_v_1 text-center pb-4">
-                        <a href="shop-single.html" class="thumbnail d-block mb-4"><img src="<?= base_url('assets/images/3.png') ?>" alt="Image" class="img-fluid"></a>
+                        <a href="shop-single.html" class="thumbnail d-block mb-4"><img src="<?= base_url('assets/images/gambar_3.png') ?>" alt="Image" class="img-fluid"></a>
                         <div>
                             <h3 class="heading mb-1"><a href="#">Dholpine Wangi Lavender</a></h3>
                             <span class="price">Rp4.500,00</span>
@@ -348,7 +391,7 @@
                         </div>
 
                     </div>
-                </div>
+                </div> -->
 
             </div>
 
@@ -386,7 +429,6 @@
 
     <!-- .site-wrap -->
 
-
     <!-- loader -->
     <div id="loader" class="show fullscreen">
         <svg class="circular" width="48px" height="48px">
@@ -411,6 +453,27 @@
     <script src="<?= base_url('assets/js/jquery.mb.YTPlayer.min.js') ?>"></script>
 
     <script src="<?= base_url('assets/js/main.js') ?>"></script>
+
+    <script>
+        function beli(id) {
+            tambah(id, 1);
+            $('#modal_keranjang').modal().show();
+            return false;
+        }
+
+        function tambah(id, qty) {
+			$.ajax({
+				url : "<?= site_url('basket/keranjang_tambah');?>",
+				type : "POST",
+                data : {id: id, qty: qty},
+                dataType: "json",
+				success: function(data){
+                    alert(data.name);
+					//$('#detail_cart').html(data);
+				}
+            });
+        }
+    </script>
 
 </body>
 
