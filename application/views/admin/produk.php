@@ -14,10 +14,10 @@
                             <th>Nama Barang</th>
                             <th>Varian</th>
                             <th>Harga</th>
-                            <th><button data-toggle="modal" data-target="#ModalTambah"><i class="fa fa-plus"></i></button></th>
+                            <th><a data-toggle="modal" data-target="#modal_tambah" type="button" class="btn"><i class="fa fa-plus"></i></a></th>
 
                             <!-- Modal Tambah -->
-                            <div class="modal fade" id="ModalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="modal_tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -36,7 +36,7 @@
                                                 <div class="form-group">
                                                     <label for="foto_produk">Foto Produk :</label>
                                                     <br>
-                                                    <img src="" id="img" height="100" style="display:none">
+                                                    <img src="" name="new_img" height="100" style="display:none">
                                                     <input type="file" class="form-control-file" name="foto_produk" id="foto_produk" placeholder="Masukkan Foto Produk ..." required>
                                                 </div>
                                                 <div class="form-group">
@@ -83,7 +83,7 @@
                                         }
                                     </style>
                                     
-                                    <img class="loader <?= $no-1 ?>" height="100" style="dislay:block">
+                                    <img class="loader <?= $no-1 ?>" height="100" style="display:block">
                                     <img src="<?= base_url('assets/images/'.$p->foto_produk) ?>" height="100" style="display:none" onload="this.style.display = 'block'; document.getElementsByClassName('loader')[<?= $no-1 ?>].style.display = 'none'">
                                     
                                 </td>
@@ -91,10 +91,10 @@
                                 <td><?= $p->varian_produk ?></td>
                                 <td><?= $p->harga_produk ?></td>
                                 <td>
-                                    <a data-toggle="modal" data-target="#ModalEdit<?= $p->id_produk ?>" type="button" class="btn"><i class="fa fa-pencil"></i></a>
+                                    <a data-toggle="modal" data-target="#modal_edit<?= $p->id_produk ?>" type="button" class="btn"><i class="fa fa-pencil"></i></a>
 
                                     <!-- Modal Edit -->
-                                    <div class="modal fade" id="ModalEdit<?= $p->id_produk ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="modal_edit<?= $p->id_produk ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -118,7 +118,7 @@
                                                             <br>
                                                             <img src="<?= base_url('assets/images/'.$p->foto_produk) ?>" height="100">
                                                             =>
-                                                            <img src="" id="img" height="100">
+                                                            <img src="" name="new_img" height="100" style="display:none">
                                                             <input type="file" class="form-control-file" name="foto_produk" id="foto_produk" placeholder="Masukkan Foto Barang ...">
                                                         </div>
                                                         <div class="form-group">
@@ -151,13 +151,18 @@
     <?php include('footer.php') ?>
 
     <script>
-        $("#foto_produk").change(function(){
+        $("[data-toggle='modal']").click(function(){  
+            $("[name='new_img']").hide();
+            $("[name='foto_produk']").val('');
+        });
+
+        $("[name='foto_produk']").change(function(){
             if (this.files && this.files[0]) {
                 var reader = new FileReader();
                 
                 reader.onload = function (e) {
-                    $('#img').show();
-                    $('#img').attr('src', e.target.result);
+                    $("[name='new_img']").show();
+                    $("[name='new_img']").attr('src', e.target.result);
                 }
                 
                 reader.readAsDataURL(this.files[0]);

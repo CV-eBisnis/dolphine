@@ -78,11 +78,13 @@
 
 <body style="background-color:#d9d9d9" data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
+
     <!-- <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-large">DHOLPINE &times;</button>
         <a href="" data-toggle="modal" data-target="#modal_login" class="w3-bar-item w3-button">Login</a>
         <a href="<?= base_url() ?>" class="w3-bar-item w3-button">Beranda</a>
         <a href=""></a>
+
     </div>
     <div class="w3-teal">
         <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
@@ -172,6 +174,49 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="modal_keranjang" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Keranjang Belanja</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <table class="table table-striped table-inverse table-responsive">
+                            <thead class="thead-inverse">
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Produk</th>
+                                    <th>Jumlah</th>
+                                    <th>Harga</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row"></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td scope="row"></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="site-wrap">
 
         <div class="site-mobile-menu site-navbar-target">
@@ -241,7 +286,7 @@
                             <h3 class="heading-2"><a href="#"><?= $p->nama_produk ?></a></h3>
                             <span class="price d-block">Rp. <?= number_format($p->harga_produk,0,",","."); ?>,00</span>
                             <br>
-                            <a href="#" class="btn add" data-toggle="modal" data-target="#modal_beli"><span class="icon-shopping-bag mr-3"></span> Beli</a>
+                            <a href="#" class="btn add" onclick="return beli(<?= $p->id_produk ?>)"><span class="icon-shopping-bag mr-3"></span> Beli</a>
 
                         </div>
                     </div>
@@ -353,7 +398,7 @@
                         </div> -->
 
                     </div>
-                </div>
+                </div> -->
 
             </div>
 
@@ -391,7 +436,6 @@
 
     <!-- .site-wrap -->
 
-
     <!-- loader -->
     <div id="loader" class="show fullscreen">
         <svg class="circular" width="48px" height="48px">
@@ -419,6 +463,27 @@
 </script>
 
     <script src="<?= base_url('assets/js/main.js') ?>"></script>
+
+    <script>
+        function beli(id) {
+            tambah(id, 1);
+            $('#modal_keranjang').modal().show();
+            return false;
+        }
+
+        function tambah(id, qty) {
+			$.ajax({
+				url : "<?= site_url('basket/keranjang_tambah');?>",
+				type : "POST",
+                data : {id: id, qty: qty},
+                dataType: "json",
+				success: function(data){
+                    alert(data.name);
+					//$('#detail_cart').html(data);
+				}
+            });
+        }
+    </script>
 
 </body>
 
