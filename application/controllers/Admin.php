@@ -10,11 +10,13 @@ class Admin extends CI_Controller
         if (isset($this->session->level)) {
             if ($this->session->level != 1) {
                 $this->session->set_flashdata('notif', 'Harap Login Sebagai Administrator!');
-                redirect('home');
+                echo "<script>alert('Harap Login Sebagai Administrator!')</script>";
+                //redirect('home');
             }
         } else {
             $this->session->set_flashdata('notif', 'Harap Login Terlebih Dahulu!');
-            redirect('home');
+            echo "<script>alert('Harap Login Terlebih Dahulu!'".$this->session->level.")</script>";
+            //redirect('home');
         }
     }
 

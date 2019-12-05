@@ -1,23 +1,33 @@
-<nav class="navbar navbar-default">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">DHOLPINE</a>
-    </div>
+<!-- Navbar -->
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="<?= site_url('admin/') ?>" class="nav-link">Home</a>
+        </li>
+    </ul>
+
+    <!-- SEARCH FORM -->
+    <form class="form-inline ml-3">
+        <div class="input-group input-group-sm">
+            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+            <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="<?= site_url('home/logout') ?>" class="nav-link">Logout <i class="fas fa-sign-out-alt"></i></a>
+        </li>
+    </ul>
 </nav>
-<aside class="sidebar">
-    <menu>
-        <ul class="menu-content">
-            <li><a href="<?= site_url('admin') ?>"><i class="fa fa-home"></i> Home</a></li>
-            <li><a href="<?= site_url('admin/user') ?>"><i class="fa fa-user"></i> Data User</a></li>
-            <li><a href="<?= site_url('admin/produk') ?>"><i class="fa fa-cube"></i> Data Produk</a></li>
-            <li><p><hr></p></li>
-            <li><a href="<?= site_url('home/logout') ?>"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
-            <!-- <li><a href="#"><i class="fa fa-shopping-basket"></i> <span>Pembelian</span></a></li> -->
-        </ul>
-    </menu>
-</aside>
+<!-- /.navbar -->
