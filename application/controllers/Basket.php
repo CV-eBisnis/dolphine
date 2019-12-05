@@ -10,7 +10,9 @@ class Basket extends CI_Controller {
 
     public function keranjang()
     {
-        # code...
+        $data = $this->cart->contents();
+
+        echo json_encode($data);
     }
 
     public function keranjang_tambah()
@@ -30,6 +32,58 @@ class Basket extends CI_Controller {
 
         $this->cart->insert($data);
 
+        echo json_encode($data);
+    }
+
+    public function keranjang_edit()
+    {
+        $rowid = $this->input->post('rowid');
+        $qty = $this->input->post('qty');
+
+        $data = []; $no=0;
+
+        foreach ($rowid as $r) {
+            
+            $data = [
+                'rowid' => $r,
+                'qty'   => $qty[$no]
+            ]; 
+            $no++;
+            $this->cart->update($data);
+        }
+
+        echo json_encode($this->cart->contents());
+    }
+
+    public function keranjang_bayar()
+    {
+        $kode = rand(1,99);
+
+        $data = [
+            'id_user' => $this->session->id_user,
+            'kode_unik' => $kode,
+            'total_biaya' => $this->cart->total() + $kode,
+            'status_bayar' => false
+        ];
+
+        $id = $this->Transaksi_model->insert($data);
+
+        $data = [];
+        $cart = $this->cart->contents();
+        foreach ($cart as $c)
+        {
+            $data[] = [
+                'id_produk' => $c['id'],
+                'jumlah_pembelian' => $c['qty'],
+                'id_transaksi' => $id
+            ];
+        }
+        $this->Detail_model->insert($data);
+
+        $data = $this->cart->total() + $kode;
+
+        $this->cart->destroy();
+        
         echo json_encode($data);
     }
 
