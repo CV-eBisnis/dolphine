@@ -1,94 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx" class="no-js">
 
 <head>
-    <title>Dholpine</title>
-    <meta charset="utf-8">
+    <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="<?= base_url('assets/') ?>images/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="CodePixar">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>DOLPHINE</title>
+    <!--
+		CSS
+		============================================= -->
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/linearicons.css">
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/themify-icons.css">
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/bootstrap.css">
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/owl.carousel.css">
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/nice-select.css">
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/nouislider.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/ion.rangeSlider.css" />
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/ion.rangeSlider.skinFlat.css" />
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/magnific-popup.css">
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/main.css">
+    <style>
+        .header {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
 
-
-    <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700|Montserrat:400,700|Roboto&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="<?= base_url('assets/fonts/icomoon/style.css') ?>">
-
-    <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/css/jquery-ui.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/css/owl.carousel.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/css/owl.theme.default.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/css/owl.theme.default.min.css') ?>">
-
-    <link rel="stylesheet" href="<?= base_url('assets/css/jquery.fancybox.min.css') ?>">
-
-    <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap-datepicker.css') ?>">
-
-    <link rel="stylesheet" href="<?= base_url('assets/fonts/flaticon/font/flaticon.css') ?>">
-
-    <link rel="stylesheet" href="<?= base_url('assets/css/aos.css') ?>">
-    <link href="<?= base_url('assets/css/jquery.mb.YTPlayer.min.css') ?>"" media=" all" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/css/w3css.css') ?>">
-
+            background-color: opacity(0%);
+            border-radius: 50%;
+            box-shadow: 25px 10px 0 0 white;
+        }
+    </style>
 </head>
 
-<style>
-    body {
-        font-family: 'Segoe UI', sans-serif;
-    }
+<body>
 
-    .sidebar {
-        height: 100%;
-        width: 200px;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #808080;
-        overflow-x: hidden;
-        padding-top: 16px;
-    }
+    <!-- Start Header Area -->
+    <header class="header_area sticky-header">
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light main_box">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <!-- <a class="navbar-brand logo_h" href="index.html"><img src="<?= base_url('assets/') ?>images/logo.png" alt=""></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button> -->
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav ml-auto">
+                            <li class="nav-item"><a class="nav-link" href="index.html"><span class="ti-home"></span></a></li>
+                            <li class="nav-item"><a class="nav-link" href="shop.html"><span class="ti-shopping-cart"></span></a></li>
+                            <li class="nav-item"><a class="nav-link" href="" data-toggle="modal" data-target="#modal_login"><span class="ti-user"></span></a></li>
+                            <!-- <li class="nav-item submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false">Shop</a>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
+									<li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
+									<li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
+									<li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
+									<li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
+								</ul>
+							</li>
+							<li class="nav-item submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false">Blog</a>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+									<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
+								</ul>
+							</li>
+							<li class="nav-item submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false">Pages</a>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+									<li class="nav-item"><a class="nav-link" href="tracking.html">Tracking</a></li>
+									<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
+								</ul>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li> -->
+                        </ul>
 
-    .sidebar a {
-        padding: 6px 8px 6px 16px;
-        text-decoration: none;
-        font-size: 20px;
-        color: black;
-        display: block;
-    }
+                        <!-- <ul class="nav navbar-nav navbar-right">
+							<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
+							<li class="nav-item">
+								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+							</li>
+						</ul> -->
+                    </div>
 
-    .sidebar a:hover {
-        color: #f1f1f1;
-    }
+                </div>
+            </nav>
+        </div>
 
-    .main {
-        margin-left: 200px;
-        padding: 0px 10px;
-    }
-
-    @media screen and (max-height: 450px) {
-        .sidebar {
-            padding-top: 15px;
-        }
-
-        .sidebar a {
-            font-size: 18px;
-        }
-    }
-</style>
-
-<body style="background-color:#d9d9d9" data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-
-
-    <!-- <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
-        <button onclick="w3_close()" class="w3-bar-item w3-large">DHOLPINE &times;</button>
-        <a href="" data-toggle="modal" data-target="#modal_login" class="w3-bar-item w3-button">Login</a>
-        <a href="<?= base_url() ?>" class="w3-bar-item w3-button">Beranda</a>
-        <a href=""></a>
-
-    </div>
-    <div class="w3-teal">
-        <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
-    </div> -->
+        <div class="search_input" id="search_input_box">
+            <div class="container">
+                <form class="d-flex justify-content-between">
+                    <input type="text" class="form-control" id="search_input" placeholder="Search Here">
+                    <button type="submit" class="btn"></button>
+                    <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+                </form>
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
 
     <!-- Modal Login -->
     <div class="modal fade" id="modal_login" tabindex="-1" role="dialog" aria-hidden="true">
@@ -174,317 +208,1088 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="modal_keranjang" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Keranjang Belanja</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        <table class="table table-striped table-inverse table-responsive">
-                            <thead class="thead-inverse">
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Produk</th>
-                                    <th>Jumlah</th>
-                                    <th>Harga</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td scope="row"></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row"></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="site-wrap">
-
-        <div class="site-mobile-menu site-navbar-target">
-            <div class="site-mobile-menu-header">
-                <div class="site-mobile-menu-close mt-3">
-                    <span class="icon-close2 js-menu-toggle"></span>
-                </div>
-            </div>
-            <div class="site-mobile-menu-body"></div>
-        </div>
-
-
-        <!-- <div class="header-top">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-12 text-center">
-                        <a href="index.html" class="site-logo">
-                            <img src="<?php //echo base_url('assets/images/logo.png') 
-                                        ?>" alt="Image" class="img-fluid">
-                        </a>
-                    </div>
-                    <a href="#" class="mx-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a>
-                </div>
-            </div>
-        </div> -->
-
-    </div>
-
-    <div class="intro-section container" style="background-image: url('<?= base_url('assets/images/gambar.jpg') ?>');">
-        <div class="row justify-content-center text-center align-items-center">
-            <div class="col-md-8">
-                <?php if (!isset($user)) { ?>
-                    <span class="sub-title">Welcome</span>
-                <?php } else { ?>
-                    <span class="sub-title">dfaZ, <?= $user ?></span>
-                <?php } ?>
-
-                <h1>Obat Nyamuk Dholpine</h1>
-            </div>
-        </div>
-    </div>
-
-    <div class="site-section">
+    <!-- start banner Area -->
+    <section class="banner-area">
         <div class="container">
-
-            <!-- <div class="row mb-5">
-                <div class="col-12 section-title text-center mb-5">
-                    <h2 class="d-block">Our Products</h2>
-                    <p><a href="#">View All Products <span class="icon-long-arrow-right"></span></a></p>
-                </div>
-            </div> -->
-
-            <div class="row justify-content-center">
-
-                <?php foreach ($produk as $p) { ?>
-                <div class="col-lg-4 col-md-6 align-self-center">
-
-                    <div class="wine_v_1 text-center pb-4">
-                        <a href="shop-single.html" class="thumbnail d-block mb-4"><img src="<?= base_url('assets/images/'.$p->foto_produk) ?>" alt="Image" class="img-fluid"></a>
-                        <div>
-                            <h3 class="heading mb-1"><a href="#"><?= $p->nama_produk ?></a></h3>
-                            <span class="price">Rp. <?= number_format($p->harga_produk,0,",","."); ?>,00</span>
-                        </div>
-
-                        <div class="wine-actions">
-
-                            <h3 class="heading-2"><a href="#"><?= $p->nama_produk ?></a></h3>
-                            <span class="price d-block">Rp. <?= number_format($p->harga_produk,0,",","."); ?>,00</span>
-                            <br>
-                            <a href="#" class="btn add" onclick="return beli(<?= $p->id_produk ?>)"><span class="icon-shopping-bag mr-3"></span> Beli</a>
-
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="modal_beli" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+            <div class="row fullscreen align-items-center justify-content-start">
+                <div class="col-lg-12">
+                    <div class="active-banner-slider owl-carousel">
+                        <!-- single-slide -->
+                        <div class="row single-slide align-items-center d-flex">
+                            <div class="col-lg-5 col-md-6">
+                                <div class="banner-content">
+                                    <h1>Dholpine Wangi <br>Lavender</h1>
+                                    <p>Dengan wangi bunga lavender, semakin ampuh melindungi kulit anda dari gigitan nyamuk
+                                        dan membuat kulit anda wangi seperti bunga lavender</p>
+                                    <div class="add-bag d-flex align-items-center">
+                                        <a class="add-btn" href=""><span class="ti-shopping-cart"></span></a>
+                                        <span class="add-text text-uppercase">Add to Cart</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                            <div class="col-md-3">
+                                <div class="banner-img">
+                                    <img class="img-fluid" src="<?= base_url('assets/') ?>images/banner/gambar_3.png" alt="">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <?php } ?>
-                
-                <!-- <div class="col-lg-4 col-md-6 align-self-center">
-
-                    <div class="wine_v_1 text-center pb-4">
-                        <a href="shop-single.html" class="thumbnail d-block mb-4"><img src="<?= base_url('assets/images/gambar_1.png') ?>" alt="Image" class="img-fluid"></a>
-                        <div>
-                            <h3 class="heading mb-1"><a href="#">Dholpine Wangi Jeruk</a></h3>
-                            <span class="price">Rp5.000,00</span>
-                        </div>
-
-
-                        <div class="wine-actions">
-
-                            <h3 class="heading-2"><a href="#">Dholpine Wangi Jeruk</a></h3>
-                            <span class="price d-block"><del>Rp5.000,00</del> Rp4.500,00</span>
-
-                            <div class="rating">
-                                <span class="icon-star"></span>
-                                <span class="icon-star"></span>
-                                <span class="icon-star"></span>
-                                <span class="icon-star"></span>
-                                <span class="icon-star-o"></span>
+                        <!-- single-slide -->
+                        <div class="row single-slide">
+                            <div class="col-lg-5">
+                                <div class="banner-content">
+                                    <h1>Dholpine Wangi<br>Apel</h1>
+                                    <p>Dengan wangi apel, semakin ampuh melindungi kulit anda dari gigitan nyamuk
+                                        dan membuat kulit anda wangi seperti apel</p>
+                                    <div class="add-bag d-flex align-items-center">
+                                        <a class="add-btn" href=""><span class="ti-shopping-cart"></span></a>
+                                        <span class="add-text text-uppercase">Add to Cart</span>
+                                    </div>
+                                </div>
                             </div>
-
-                            <a href="#" class="btn add"><span class="icon-shopping-bag mr-3"></span> Add to Cart</a>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-lg-4 col-md-6 align-self-center">
-                    <div class="wine_v_1 text-center pb-4">
-                        <a href="shop-single.html" class="thumbnail d-block mb-4"><img src="<?= base_url('assets/images/gambar_2.png') ?>" alt="Image" class="img-fluid"></a>
-                        <div>
-                            <h3 class="heading mb-1"><a href="#">Dholpine Wangi Apel</a></h3>
-                            <span class="price">Rp4.500,00</span>
-                        </div>
-
-
-                        <div class="wine-actions">
-
-                            <h3 class="heading-2"><a href="#">Dholpine Wangi Apel</a></h3>
-                            <span class="price d-block"><del>Rp5.000,00</del> Rp4.500,00</span>
-
-                            <div class="rating">
-                                <span class="icon-star"></span>
-                                <span class="icon-star"></span>
-                                <span class="icon-star"></span>
-                                <span class="icon-star"></span>
-                                <span class="icon-star-o"></span>
+                            <div class="col-md-3">
+                                <div class="banner-img">
+                                    <img class="img-fluid" src="<?= base_url('assets/') ?>images/banner/gambar_2.png" alt="">
+                                </div>
                             </div>
-
-                            <a href="#" class="btn add"><span class="icon-shopping-bag mr-3"></span> Add to Cart</a>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 align-self-center">
-                    <div class="wine_v_1 text-center pb-4">
-                        <a href="shop-single.html" class="thumbnail d-block mb-4"><img src="<?= base_url('assets/images/gambar_3.png') ?>" alt="Image" class="img-fluid"></a>
-                        <div>
-                            <h3 class="heading mb-1"><a href="#">Dholpine Wangi Lavender</a></h3>
-                            <span class="price">Rp4.500,00</span>
-                        </div>
-
-
-                        <div class="wine-actions">
-
-                            <h3 class="heading-2"><a href="#">Dholpine Wangi Lavender</a></h3>
-                            <span class="price d-block"><del>Rp5.000,00</del> Rp4.500,00</span>
-
-                            <div class="rating">
-                                <span class="icon-star"></span>
-                                <span class="icon-star"></span>
-                                <span class="icon-star"></span>
-                                <span class="icon-star"></span>
-                                <span class="icon-star-o"></span>
+                        <!-- single-slide -->
+                        <div class="row single-slide">
+                            <div class="col-lg-5">
+                                <div class="banner-content">
+                                    <h1>Dholpine Wangi <br>Jeruk</h1>
+                                    <p>Dengan wangi jeruk, semakin ampuh melindungi kulit anda dari gigitan nyamuk
+                                        dan membuat kulit anda wangi seperti jeruk</p>
+                                    <div class="add-bag d-flex align-items-center">
+                                        <a class="add-btn" href=""><span class="ti-shopping-cart"></span></a>
+                                        <span class="add-text text-uppercase">Add to Cart</span>
+                                    </div>
+                                </div>
                             </div>
-
-                            <a href="#" class="btn add"><span class="icon-shopping-bag mr-3"></span> Add to Cart</a>
-                        </div> -->
-
-                    </div>
-                </div> -->
-
-            </div>
-
-        </div>
-    </div>
-
-    <!-- <div class="footer">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-12 text-center">
-                    <div class="social-icons">
-                        <a href="#"><span class="icon-facebook"></span></a>
-                        <a href="#"><span class="icon-twitter"></span></a>
-                        <a href="#"><span class="icon-youtube"></span></a>
-                        <a href="#"><span class="icon-instagram"></span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="copyright">
-                        <p> -->
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            <!-- Copyright &copy;<script>
-                                document.write(new Date().getFullYear());
-                            </script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> -->
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <!-- </p>
+                            <div class="col-md-3">
+                                <div class="banner-img">
+                                    <img class="img-fluid" src="<?= base_url('assets/') ?>images/banner/gambar_1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div> -->
+    </section>
+    <!-- End banner Area -->
 
-    <!-- .site-wrap -->
+    <!-- start features Area -->
+    <!-- <section class="features-area section_gap">
+		<div class="container">
+			<div class="row features-inner"> -->
+    <!-- single features -->
+    <!-- <div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="<?= base_url('assets/') ?>images/features/f-icon1.png" alt="">
+						</div>
+						<h6>Free Delivery</h6>
+						<p>Free Shipping on all order</p>
+					</div>
+				</div> -->
+    <!-- single features -->
+    <!-- <div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="<?= base_url('assets/') ?>images/features/f-icon2.png" alt="">
+						</div>
+						<h6>Return Policy</h6>
+						<p>Free Shipping on all order</p>
+					</div>
+				</div> -->
+    <!-- single features -->
+    <!-- <div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="<?= base_url('assets/') ?>images/features/f-icon3.png" alt="">
+						</div>
+						<h6>24/7 Support</h6>
+						<p>Free Shipping on all order</p>
+					</div>
+				</div> -->
+    <!-- single features -->
+    <!-- <div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="<?= base_url('assets/') ?>images/features/f-icon4.png" alt="">
+						</div>
+						<h6>Secure Payment</h6>
+						<p>Free Shipping on all order</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> -->
+    <!-- end features Area -->
 
-    <!-- loader -->
-    <div id="loader" class="show fullscreen">
-        <svg class="circular" width="48px" height="48px">
-            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#ff5e15" />
-        </svg>
-    </div>
+    <!-- Start category Area -->
+    <!-- <section class="category-area">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 col-md-12">
+					<div class="row">
+						<div class="col-lg-8 col-md-8">
+							<div class="single-deal">
+								<div class="overlay"></div>
+								<img class="img-fluid w-100" src="<?= base_url('assets/') ?>images/category/c1.jpg" alt="">
+								<a href="<?= base_url('assets/') ?>images/category/c1.jpg" class="img-pop-up" target="_blank">
+									<div class="deal-details">
+										<h6 class="deal-title">Sneaker for Sports</h6>
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4">
+							<div class="single-deal">
+								<div class="overlay"></div>
+								<img class="img-fluid w-100" src="<?= base_url('assets/') ?>images/category/c2.jpg" alt="">
+								<a href="<?= base_url('assets/') ?>images/category/c2.jpg" class="img-pop-up" target="_blank">
+									<div class="deal-details">
+										<h6 class="deal-title">Sneaker for Sports</h6>
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4">
+							<div class="single-deal">
+								<div class="overlay"></div>
+								<img class="img-fluid w-100" src="<?= base_url('assets/') ?>images/category/c3.jpg" alt="">
+								<a href="<?= base_url('assets/') ?>images/category/c3.jpg" class="img-pop-up" target="_blank">
+									<div class="deal-details">
+										<h6 class="deal-title">Product for Couple</h6>
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="col-lg-8 col-md-8">
+							<div class="single-deal">
+								<div class="overlay"></div>
+								<img class="img-fluid w-100" src="<?= base_url('assets/') ?>images/category/c4.jpg" alt="">
+								<a href="<?= base_url('assets/') ?>images/category/c4.jpg" class="img-pop-up" target="_blank">
+									<div class="deal-details">
+										<h6 class="deal-title">Sneaker for Sports</h6>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="single-deal">
+						<div class="overlay"></div>
+						<img class="img-fluid w-100" src="<?= base_url('assets/') ?>images/category/c5.jpg" alt="">
+						<a href="<?= base_url('assets/') ?>images/category/c5.jpg" class="img-pop-up" target="_blank">
+							<div class="deal-details">
+								<h6 class="deal-title">Sneaker for Sports</h6>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> -->
+    <!-- End category Area -->
 
-    <script src="<?= base_url('assets/js/jquery-3.3.1.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/jquery-migrate-3.0.1.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/jquery-ui.js') ?>"></script>
-    <script src="<?= base_url('assets/js/popper.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/owl.carousel.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/jquery.stellar.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/jquery.countdown.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/bootstrap-datepicker.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/jquery.easing.1.3.js') ?>"></script>
-    <script src="<?= base_url('assets/js/aos.js') ?>"></script>
-    <script src="<?= base_url('assets/js/jquery.fancybox.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/jquery.sticky.js') ?>"></script>
-    <script src="<?= base_url('assets/js/jquery.mb.YTPlayer.min.js') ?>"></script>
-    <script> function w3_open() { document.getElementById("mySidebar").style.display = "block"; }
-    function w3_close() {document.getElementById("mySidebar").style.display = "none";}
-</script>
+    <!-- start product Area -->
+    <!-- <section class="owl-carousel active-product-area section_gap"> -->
+    <!-- single product slide -->
+    <!-- <div class="single-product-slider">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-6 text-center">
+						<div class="section-title">
+							<h1>Latest Products</h1>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+								dolore
+								magna aliqua.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row"> -->
+    <!-- single product -->
+    <!-- <div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="<?= base_url('assets/') ?>images/product/p1.jpg" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>$150.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+								<div class="prd-bottom">
 
-    <script src="<?= base_url('assets/js/main.js') ?>"></script>
+									<a href="" class="social-info">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-heart"></span>
+										<p class="hover-text">Wishlist</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-sync"></span>
+										<p class="hover-text">compare</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+    <!-- single product -->
+    <!-- <div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="<?= base_url('assets/') ?>images/product/p2.jpg" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>$150.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+								<div class="prd-bottom">
 
-    <script>
-        function beli(id) {
-            tambah(id, 1);
-            $('#modal_keranjang').modal().show();
-            return false;
-        }
+									<a href="" class="social-info">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-heart"></span>
+										<p class="hover-text">Wishlist</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-sync"></span>
+										<p class="hover-text">compare</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+    <!-- single product -->
+    <!-- <div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="<?= base_url('assets/') ?>images/product/p3.jpg" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>$150.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+								<div class="prd-bottom">
+									<a href="" class="social-info">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-heart"></span>
+										<p class="hover-text">Wishlist</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-sync"></span>
+										<p class="hover-text">compare</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+    <!-- single product -->
+    <!-- <div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="<?= base_url('assets/') ?>images/product/p4.jpg" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>$150.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+								<div class="prd-bottom">
 
-        function tambah(id, qty) {
-			$.ajax({
-				url : "<?= site_url('basket/keranjang_tambah');?>",
-				type : "POST",
-                data : {id: id, qty: qty},
-                dataType: "json",
-				success: function(data){
-                    alert(data.name);
-					//$('#detail_cart').html(data);
-				}
-            });
-        }
-    </script>
+									<a href="" class="social-info">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-heart"></span>
+										<p class="hover-text">Wishlist</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-sync"></span>
+										<p class="hover-text">compare</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+    <!-- single product -->
+    <!-- <div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="<?= base_url('assets/') ?>images/product/p5.jpg" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>$150.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+								<div class="prd-bottom">
 
+									<a href="" class="social-info">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-heart"></span>
+										<p class="hover-text">Wishlist</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-sync"></span>
+										<p class="hover-text">compare</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+    <!-- single product -->
+    <!-- <div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="<?= base_url('assets/') ?>images/product/p6.jpg" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>$150.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+								<div class="prd-bottom">
+
+									<a href="" class="social-info">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-heart"></span>
+										<p class="hover-text">Wishlist</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-sync"></span>
+										<p class="hover-text">compare</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+    <!-- single product -->
+    <!-- <div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="<?= base_url('assets/') ?>images/product/p7.jpg" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>$150.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+								<div class="prd-bottom">
+
+									<a href="" class="social-info">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-heart"></span>
+										<p class="hover-text">Wishlist</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-sync"></span>
+										<p class="hover-text">compare</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+    <!-- single product -->
+    <!-- <div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="<?= base_url('assets/') ?>images/product/p8.jpg" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>$150.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+								<div class="prd-bottom">
+
+									<a href="" class="social-info">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-heart"></span>
+										<p class="hover-text">Wishlist</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-sync"></span>
+										<p class="hover-text">compare</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+    <!-- single product slide -->
+    <!-- <div class="single-product-slider">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-6 text-center">
+						<div class="section-title">
+							<h1>Coming Products</h1>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+								dolore
+								magna aliqua.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row"> -->
+    <!-- single product -->
+    <!-- <div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="<?= base_url('assets/') ?>images/product/p6.jpg" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>$150.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+								<div class="prd-bottom">
+
+									<a href="" class="social-info">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-heart"></span>
+										<p class="hover-text">Wishlist</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-sync"></span>
+										<p class="hover-text">compare</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+    <!-- single product -->
+    <!-- <div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="<?= base_url('assets/') ?>images/product/p8.jpg" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>$150.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+								<div class="prd-bottom">
+
+									<a href="" class="social-info">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-heart"></span>
+										<p class="hover-text">Wishlist</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-sync"></span>
+										<p class="hover-text">compare</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+    <!-- single product -->
+    <!-- <div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="<?= base_url('assets/') ?>images/product/p3.jpg" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>$150.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+								<div class="prd-bottom">
+
+									<a href="" class="social-info">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-heart"></span>
+										<p class="hover-text">Wishlist</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-sync"></span>
+										<p class="hover-text">compare</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+    <!-- single product -->
+    <!-- <div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="<?= base_url('assets/') ?>images/product/p5.jpg" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>$150.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+								<div class="prd-bottom">
+
+									<a href="" class="social-info">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-heart"></span>
+										<p class="hover-text">Wishlist</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-sync"></span>
+										<p class="hover-text">compare</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+    <!-- single product -->
+    <!-- <div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="<?= base_url('assets/') ?>images/product/p1.jpg" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>$150.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+								<div class="prd-bottom">
+
+									<a href="" class="social-info">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-heart"></span>
+										<p class="hover-text">Wishlist</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-sync"></span>
+										<p class="hover-text">compare</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+    <!-- single product -->
+    <!-- <div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="<?= base_url('assets/') ?>images/product/p4.jpg" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>$150.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+								<div class="prd-bottom">
+
+									<a href="" class="social-info">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-heart"></span>
+										<p class="hover-text">Wishlist</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-sync"></span>
+										<p class="hover-text">compare</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+    <!-- single product -->
+    <!-- <div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="<?= base_url('assets/') ?>images/product/p1.jpg" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>$150.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+								<div class="prd-bottom">
+
+									<a href="" class="social-info">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-heart"></span>
+										<p class="hover-text">Wishlist</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-sync"></span>
+										<p class="hover-text">compare</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+    <!-- single product -->
+    <!-- <div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="<?= base_url('assets/') ?>images/product/p8.jpg" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>$150.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+								<div class="prd-bottom">
+
+									<a href="" class="social-info">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-heart"></span>
+										<p class="hover-text">Wishlist</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-sync"></span>
+										<p class="hover-text">compare</p>
+									</a>
+									<a href="" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> -->
+    <!-- end product Area -->
+
+    <!-- Start exclusive deal Area -->
+    <!-- <section class="exclusive-deal-area">
+		<div class="container-fluid">
+			<div class="row justify-content-center align-items-center">
+				<div class="col-lg-6 no-padding exclusive-left">
+					<div class="row clock_sec clockdiv" id="clockdiv">
+						<div class="col-lg-12">
+							<h1>Exclusive Hot Deal Ends Soon!</h1>
+							<p>Who are in extremely love with eco friendly system.</p>
+						</div>
+						<div class="col-lg-12">
+							<div class="row clock-wrap">
+								<div class="col clockinner1 clockinner">
+									<h1 class="days">150</h1>
+									<span class="smalltext">Days</span>
+								</div>
+								<div class="col clockinner clockinner1">
+									<h1 class="hours">23</h1>
+									<span class="smalltext">Hours</span>
+								</div>
+								<div class="col clockinner clockinner1">
+									<h1 class="minutes">47</h1>
+									<span class="smalltext">Mins</span>
+								</div>
+								<div class="col clockinner clockinner1">
+									<h1 class="seconds">59</h1>
+									<span class="smalltext">Secs</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<a href="" class="primary-btn">Shop Now</a>
+				</div>
+				<div class="col-lg-6 no-padding exclusive-right">
+					<div class="active-exclusive-product-slider"> -->
+    <!-- single exclusive carousel -->
+    <!-- <div class="single-exclusive-slider">
+							<img class="img-fluid" src="<?= base_url('assets/') ?>images/product/e-p1.png" alt="">
+							<div class="product-details">
+								<div class="price">
+									<h6>$150.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+								<h4>addidas New Hammer sole
+									for Sports person</h4>
+								<div class="add-bag d-flex align-items-center justify-content-center">
+									<a class="add-btn" href=""><span class="ti-bag"></span></a>
+									<span class="add-text text-uppercase">Add to Bag</span>
+								</div>
+							</div>
+						</div> -->
+    <!-- single exclusive carousel -->
+    <!-- <div class="single-exclusive-slider">
+							<img class="img-fluid" src="<?= base_url('assets/') ?>images/product/e-p1.png" alt="">
+							<div class="product-details">
+								<div class="price">
+									<h6>$150.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+								<h4>addidas New Hammer sole
+									for Sports person</h4>
+								<div class="add-bag d-flex align-items-center justify-content-center">
+									<a class="add-btn" href=""><span class="ti-bag"></span></a>
+									<span class="add-text text-uppercase">Add to Bag</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> -->
+    <!-- End exclusive deal Area -->
+
+    <!-- Start brand Area -->
+    <!-- <section class="brand-area section_gap">
+		<div class="container">
+			<div class="row">
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="<?= base_url('assets/') ?>images/brand/1.png" alt="">
+				</a>
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="<?= base_url('assets/') ?>images/brand/2.png" alt="">
+				</a>
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="<?= base_url('assets/') ?>images/brand/3.png" alt="">
+				</a>
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="<?= base_url('assets/') ?>images/brand/4.png" alt="">
+				</a>
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="<?= base_url('assets/') ?>images/brand/5.png" alt="">
+				</a>
+			</div>
+		</div>
+	</section> -->
+    <!-- End brand Area -->
+
+    <!-- Start related-product Area -->
+    <!-- <section class="related-product-area section_gap_bottom"></section>
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6 text-center">
+					<div class="section-title">
+						<h1>Deals of the Week</h1>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+							magna aliqua.</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-9">
+					<div class="row">
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="<?= base_url('assets/') ?>images/r1.jpg" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>$189.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="<?= base_url('assets/') ?>images/r2.jpg" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>$189.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="<?= base_url('assets/') ?>images/r3.jpg" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>$189.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="<?= base_url('assets/') ?>images/r5.jpg" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>$189.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="<?= base_url('assets/') ?>images/r6.jpg" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>$189.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="<?= base_url('assets/') ?>images/r7.jpg" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>$189.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="<?= base_url('assets/') ?>images/r9.jpg" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>$189.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="<?= base_url('assets/') ?>images/r10.jpg" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>$189.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="<?= base_url('assets/') ?>images/r11.jpg" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>$189.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3">
+					<div class="ctg-right">
+						<a href="#" target="_blank">
+							<img class="img-fluid d-block mx-auto" src="<?= base_url('assets/') ?>images/category/c5.jpg" alt="">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> -->
+    <!-- End related-product Area -->
+
+    <!-- start footer Area -->
+    <!-- <footer class="footer-area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h6>About Us</h6>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
+							magna aliqua.
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-4  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h6>Newsletter</h6>
+						<p>Stay update with our latest</p>
+						<div class="" id="mc_embed_signup">
+
+							<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+							 method="get" class="form-inline">
+
+								<div class="d-flex flex-row">
+
+									<input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
+									 required="" type="email">
+
+
+									<button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+									<div style="position: absolute; left: -5000px;">
+										<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+									</div> -->
+
+    <!-- <div class="col-lg-4 col-md-4">
+												<button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
+											</div>  -->
+    <!-- </div>
+								<div class="info"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3  col-md-6 col-sm-6">
+					<div class="single-footer-widget mail-chimp">
+						<h6 class="mb-20">Instragram Feed</h6>
+						<ul class="instafeed d-flex flex-wrap">
+							<li><img src="<?= base_url('assets/') ?>images/i1.jpg" alt=""></li>
+							<li><img src="<?= base_url('assets/') ?>images/i2.jpg" alt=""></li>
+							<li><img src="<?= base_url('assets/') ?>images/i3.jpg" alt=""></li>
+							<li><img src="<?= base_url('assets/') ?>images/i4.jpg" alt=""></li>
+							<li><img src="<?= base_url('assets/') ?>images/i5.jpg" alt=""></li>
+							<li><img src="<?= base_url('assets/') ?>images/i6.jpg" alt=""></li>
+							<li><img src="<?= base_url('assets/') ?>images/i7.jpg" alt=""></li>
+							<li><img src="<?= base_url('assets/') ?>images/i8.jpg" alt=""></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h6>Follow Us</h6>
+						<p>Let us be social</p>
+						<div class="footer-social d-flex align-items-center">
+							<a href="#"><i class="fa fa-facebook"></i></a>
+							<a href="#"><i class="fa fa-twitter"></i></a>
+							<a href="#"><i class="fa fa-dribbble"></i></a>
+							<a href="#"><i class="fa fa-behance"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap"> -->
+    <!-- <p class="footer-text m-0">Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    <!-- Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> -->
+    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    <!-- </p> -->
+    <!-- </div>
+		</div>
+	</footer> -->
+    <!-- End footer Area -->
+
+    <script src="<?= base_url('assets/') ?>js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="<?= base_url('assets/') ?>js/vendor/bootstrap.min.js"></script>
+    <script src="<?= base_url('assets/') ?>js/jquery.ajaxchimp.min.js"></script>
+    <script src="<?= base_url('assets/') ?>js/jquery.nice-select.min.js"></script>
+    <script src="<?= base_url('assets/') ?>js/jquery.sticky.js"></script>
+    <script src="<?= base_url('assets/') ?>js/nouislider.min.js"></script>
+    <script src="<?= base_url('assets/') ?>js/countdown.js"></script>
+    <script src="<?= base_url('assets/') ?>js/jquery.magnific-popup.min.js"></script>
+    <script src="<?= base_url('assets/') ?>js/owl.carousel.min.js"></script>
+    <!--gmaps Js-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+    <script src="<?= base_url('assets/') ?>js/gmaps.min.js"></script>
+    <script src="<?= base_url('assets/') ?>js/main.js"></script>
 </body>
 
 </html>
