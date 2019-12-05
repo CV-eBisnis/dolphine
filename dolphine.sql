@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2019 at 03:38 AM
+-- Generation Time: Dec 05, 2019 at 01:59 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -21,6 +21,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `dolphine`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detail_transaksi`
+--
+
+CREATE TABLE `detail_transaksi` (
+  `id_detail` int(11) NOT NULL,
+  `id_produk` int(11) NOT NULL,
+  `jumlah_pembelian` int(11) NOT NULL,
+  `id_transaksi` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detail_transaksi`
+--
+
+INSERT INTO `detail_transaksi` (`id_detail`, `id_produk`, `jumlah_pembelian`, `id_transaksi`) VALUES
+(1, 1, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -54,12 +74,17 @@ INSERT INTO `produk` (`id_produk`, `foto_produk`, `nama_produk`, `varian_produk`
 CREATE TABLE `transaksi` (
   `id_transaksi` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_produk` int(11) NOT NULL,
-  `jumlah_pembelian` int(11) NOT NULL,
   `kode_unik` int(11) NOT NULL,
   `total_biaya` int(11) NOT NULL,
   `status_bayar` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`id_transaksi`, `id_user`, `kode_unik`, `total_biaya`, `status_bayar`) VALUES
+(1, 2, 75, 30075, 0);
 
 -- --------------------------------------------------------
 
@@ -90,6 +115,12 @@ INSERT INTO `user` (`id_user`, `email`, `password`, `nama`, `alamat`, `no_hp`, `
 --
 
 --
+-- Indexes for table `detail_transaksi`
+--
+ALTER TABLE `detail_transaksi`
+  ADD PRIMARY KEY (`id_detail`);
+
+--
 -- Indexes for table `produk`
 --
 ALTER TABLE `produk`
@@ -115,12 +146,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `user`
 --

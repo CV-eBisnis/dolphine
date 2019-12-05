@@ -37,7 +37,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="datatransaksi.html" class="nav-link">
+                    <a href="<?= site_url('admin/transaksi') ?>" class="nav-link">
                         <i class="nav-icon fas fa-handshake"></i>
                         <p>
                             Data Transaksi

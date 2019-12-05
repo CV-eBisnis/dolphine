@@ -11,12 +11,12 @@ class Admin extends CI_Controller
             if ($this->session->level != 1) {
                 $this->session->set_flashdata('notif', 'Harap Login Sebagai Administrator!');
                 echo "<script>alert('Harap Login Sebagai Administrator!')</script>";
-                //redirect('home');
+                redirect('home');
             }
         } else {
             $this->session->set_flashdata('notif', 'Harap Login Terlebih Dahulu!');
             echo "<script>alert('Harap Login Terlebih Dahulu!'".$this->session->level.")</script>";
-            //redirect('home');
+            redirect('home');
         }
     }
 
@@ -178,6 +178,24 @@ class Admin extends CI_Controller
         }
         
         redirect('admin/produk');
+    }
+
+    public function transaksi()
+    {
+        $transaksi = $this->Transaksi_model->select();
+        // $namas = [];
+        // foreach ($transaksi as $t) {
+        //     $id['id_user'] = $transaksi->id_user;
+        //     $nama = $this->User_model->select_where($id)['nama'];
+        // }
+
+        $data['transaksi'] = $transaksi;
+        $this->load->view('admin/transaksi', $data);
+    }
+
+    public function transaksi_hapus()
+    {
+        # code...
     }
 }
 
