@@ -20,3 +20,5 @@
 <link rel="stylesheet" href="<?= base_url('assets/admin/')?>plugins/summernote/summernote-bs4.css">
 <!-- Google Font: Source Sans Pro -->
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+<!-- DataTables -->
+<link rel="stylesheet" type="text/css" href="<?= base_url('assets/')?>DataTables/datatables.min.css"/>

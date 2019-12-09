@@ -5,7 +5,6 @@ class Basket extends CI_Controller {
 
     public function index()
     {
-        
     }
 
     public function keranjang()
@@ -15,7 +14,7 @@ class Basket extends CI_Controller {
         echo json_encode($data);
     }
 
-    public function keranjang_tambah()
+    public function tambah()
     {
         $data['id_produk'] = $this->input->post('id');
 
@@ -35,7 +34,7 @@ class Basket extends CI_Controller {
         echo json_encode($data);
     }
 
-    public function keranjang_edit()
+    public function edit()
     {
         $rowid = $this->input->post('rowid');
         $qty = $this->input->post('qty');
@@ -55,30 +54,34 @@ class Basket extends CI_Controller {
         echo json_encode($this->cart->contents());
     }
 
-    public function keranjang_bayar()
+    public function bayar()
     {
         $kode = rand(1,99);
 
         $data = [
-            'id_user' => $this->session->id_user,
-            'kode_unik' => $kode,
-            'total_biaya' => $this->cart->total() + $kode,
-            'status_bayar' => false
+            'id_user'       => $this->session->id_user,
+            'tanggal'       => date("Y-m-d"),
+            'biaya'         => $this->cart->total(),
+            'kode_unik'     => $kode,
+            'total_bayar'   => $this->cart->total() + $kode,
+            'status_bayar'  => false
         ];
 
         $id = $this->Transaksi_model->insert($data);
 
-        $data = [];
+        $datas = [];
         $cart = $this->cart->contents();
         foreach ($cart as $c)
         {
-            $data[] = [
+            $data = [];
+            $data = [
                 'id_produk' => $c['id'],
                 'jumlah_pembelian' => $c['qty'],
                 'id_transaksi' => $id
             ];
+            array_push($datas, $data);
         }
-        $this->Detail_model->insert($data);
+        $this->Detail_model->insert($datas);
 
         $data = $this->cart->total() + $kode;
 

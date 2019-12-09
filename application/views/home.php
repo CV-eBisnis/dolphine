@@ -47,7 +47,7 @@
 </head>
 
 <body>
-
+<?php $log = (isset($user->nama)) ? true : false ?>
     <!-- Start Header Area -->
     <header class="header_area sticky-header">
         <div class="main_menu">
@@ -55,25 +55,19 @@
                 <div class="container">
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav mr-auto">
+                            <li class="nav-item">
+                                Welcome<b><?php if($log) { echo ", "; echo ($this->session->level=='admin') ? "<a href='".site_url('admin/')."'>".$user->nama."</a>" : $user->nama; } ?></b>!
+                            </li>
+                        </ul>
                         <ul class="nav navbar-nav menu_nav ml-auto">
-                            <!-- <li class="nav-item"><a class="nav-link" href="index.html"><span class="ti-home"></span></a></li> -->
                             <li class="nav-item"><a class="nav-link" href="" data-toggle="modal" data-target="#modal_keranjang"><span class="ti-shopping-cart"></span></a></li>
-                            <li class="nav-item"><a class="nav-link" href="" data-toggle="modal" data-target="#modal_login"><span class="ti-user"></span></a></li>
+                            <li class="nav-item"><a class="nav-link" href="" data-toggle="modal" <?php echo ($log) ? "data-target='#modal_user'" : "data-target='#modal_login'" ?> ><span class="ti-user"></span></a></li>
                         </ul>
                     </div>
 
                 </div>
             </nav>
-        </div>
-
-        <div class="search_input" id="search_input_box">
-            <div class="container">
-                <form class="d-flex justify-content-between">
-                    <input type="text" class="form-control" id="search_input" placeholder="Search Here">
-                    <button type="submit" class="btn"></button>
-                    <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
-                </form>
-            </div>
         </div>
     </header>
     <!-- End Header Area -->
@@ -93,12 +87,12 @@
                             <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#tab_masuk" role="tab">
-                                        <i class="fa fa-user mr-1"></i>Masuk
+                                        <span class="fa fa-user mr-1"></span>Masuk
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#tab_daftar" role="tab">
-                                        <i class="fa fa-user-plus mr-1"></i>Daftar
+                                        <span class="fa fa-user-plus mr-1"></span>Daftar
                                     </a>
                                 </li>
                             </ul>
@@ -112,9 +106,10 @@
                     <!-- Tab panels -->
                     <div class="tab-content">
 
-                        <!--Panel Masuk-->
+                        <!-- Panel Masuk -->
                         <div class="tab-pane fade in show active" id="tab_masuk" role="tabpanel">
                             <form action="<?= site_url('home/login') ?>" method="post">
+                                <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="email">Email :</label>
@@ -122,7 +117,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="password">Password :</label>
-                                        <input type="password" class="form-control" name="password" id="password_masuk" placeholder="Masukkan Password ..." required minlength="8">
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" name="password" id="password_masuk" placeholder="Masukkan Password ..." required minlength="8">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary" type="button" id="eye_masuk"><span class="fa fa-eye-slash"></span></button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -131,9 +131,10 @@
                             </form>
                         </div>
 
-                        <!--Panel Daftar-->
+                        <!-- Panel Daftar -->
                         <div class="tab-pane fade in" id="tab_daftar" role="tabpanel">
                             <form action="<?= site_url('home/daftar') ?>" method="post">
+                                <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="nama">Nama :</label>
@@ -145,7 +146,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="password">Password :</label>
-                                        <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Password ..." required minlength="8">
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Password ..." required minlength="8">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary" type="button" id="eye"><span class="fa fa-eye-slash"></span></button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -161,12 +167,143 @@
             </div>
         </div>
     </div>
+        
+    <?php if ($log) { ?>
+    <!-- Modal User -->
+    <div class="modal fade" id="modal_user" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <!--Modal cascading tabs-->
+                <div class="modal-c-tabs">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#profil" role="tab">
+                                        Profil
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#riwayat" role="tab">
+                                        Riwayat
+                                    </a>
+                                </li>
+                                <!-- <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#pengiriman" role="tab">
+                                        Pengiriman
+                                    </a>
+                                </li> -->
+                            </ul>
+                        </h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <!-- Tab panels -->
+                    <div class="tab-content">
+
+                        <!-- Panel User -->
+                        <div class="tab-pane fade in show active" id="profil" role="tabpanel">
+                            <form action="<?= site_url('user/edit') ?>" method="post">
+                                <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <input type="hidden" class="form-control" name="id_user" id="id_user<?= $user->id_user ?>" value="<?= $user->id_user ?>">
+                                        <label for="nama">Nama :</label>
+                                        <input type="text" class="form-control" name="nama" id="nama<?= $user->id_user ?>" placeholder="Masukkan Nama ..." value="<?= $user->nama ?>" required minlength="5">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="alamat">Alamat :</label>
+                                        <input type="text" class="form-control" name="alamat" id="alamat<?= $user->id_user ?>" placeholder="Masukkan Alamat ..." value="<?= $user->alamat ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="no_hp">No. HP :</label>
+                                        <input type="number" class="form-control" name="no_hp" id="no_hp<?= $user->id_user ?>" placeholder="Masukkan No. HP ..." value="<?= $user->no_hp ?>">
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label for="email">Email :</label>
+                                        <input type="email" class="form-control" name="email" id="email<?= $user->id_user ?>" placeholder="Masukkan Email ..." value="<?= $user->email ?>"required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password :</label>
+                                        <input type="password" class="form-control" name="password" id="password<?= $user->id_user ?>" placeholder="Masukkan Password ..." value="<?= $this->encryption->decrypt($user->password) ?>" required minlength="8">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="<?= site_url('home/logout') ?>" class="btn btn-danger">Keluar</a>
+                                    |
+                                    <button type="simpan" class="btn btn-primary">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Panel Riwayat -->
+                        <div class="tab-pane fade in" id="riwayat" role="tabpanel">
+                            <div class="modal-body">
+                            <table class="table" id="myTable">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Tanggal</th>
+                                        <th>Barang</th>
+                                        <th>Total Bayar (Rp.)</th>
+                                        <th>Lunas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $no = 0;
+                                    foreach ($transaksi as $trans => $t) {
+                                        $no++; ?>
+                                    <tr>
+                                        <td><?= $no ?></td>
+                                        <td><?= date('j/m/Y', strtotime($t->tanggal)) ?></td>
+                                        <td>
+                                            <?php $j = 1; foreach ($products[$trans] as $pro => $p) { if ($j>1) { echo "<br>"; } echo "- ".$p." (".$jumlah[$trans][$pro]." buah)"; $j++; } ?>
+                                        </td>
+                                        <td><?= number_format($t->total_bayar,0,",",".") ?>,-</td>
+                                        <td class="text-center"><?php echo "<b>".(($t->status_bayar) ? "LUNAS" : "-=PROSES=-")."</b>"; ?></td>
+                                    </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="simpan" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </div>
+
+                        <!-- Panel Pengiriman -->
+                        <div class="tab-pane fade in" id="pengiriman" role="tabpanel">
+                            <div class="modal-body">
+                                <table class="table">
+                                    
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="simpan" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
 
     <!-- Modal Keranjang -->
     <div class="modal fade" id="modal_keranjang" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form action="<?= site_url() ?>" method="post" id="form_keranjang">
+                    <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                     <div class="modal-header">
                         <h5 class="modal-title">Keranjang Belanja</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -184,16 +321,13 @@
                             </thead>
                             <tbody id="table_body">
                                 <tr>
-                                    <td scope="row"></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td colspan="3">Keranjang Kosong!</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Lanjutkan</button>
+                        <button type="submit" class="btn btn-primary">Update & Lanjutkan</button>
                     </div>
                 </form>
             </div>
@@ -204,37 +338,35 @@
     <div class="modal fade" id="modal_pesanan" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <!-- <form action="" method="post" id="form_pesanan"> -->
-                    <div class="modal-header">
-                        <h5 class="modal-title">Pesanan</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body table-responsive">
-                        <table class="table">
-                            <thead class="thead-inverse">
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Produk</th>
-                                    <th>Jumlah</th>
-                                    <th>Harga</th>
-                                </tr>
-                            </thead>
-                            <tbody id="table_pesanan">
-                                <tr>
-                                    <td scope="row"></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" onclick="return confirm('Anda Yakin?')" id="bayar">Bayar</button>
-                    </div>
-                <!-- </form> -->
+                <div class="modal-header">
+                    <h5 class="modal-title">Pesanan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body table-responsive">
+                    <table class="table">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th>No.</th>
+                                <th>Produk</th>
+                                <th>Jumlah</th>
+                                <th>Harga</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table_pesanan">
+                            <tr>
+                                <td scope="row"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" id="bayar">Bayar</button>
+                </div>
             </div>
         </div>
     </div>
@@ -252,11 +384,10 @@
                 <div class="modal-body table-responsive">
                     <p>Terima kasih telah melakukan pembelian.</p>
                     <p id="transfer"></p>
-                    <p>Transfer ke nomor rekening :</p>
-                    <p><b>07773123456789</b></p>
+                    <p>Transfer ke nomor rekening : <b>07773123456789</b></p>
                 </div>
                 <div class="modal-footer">
-                    <a href="" class="btn btn-primary">Bayar</a>
+                    <a href="" class="btn btn-primary">OK</a>
                 </div>
             </div>
         </div>
@@ -267,7 +398,7 @@
         <div class="container">
             <div class="row fullscreen align-items-center justify-content-start">
                 <div class="col-lg-12">
-                    <div class="active-banner-slider owl-carousel" id="carouselExampleControls">
+                    <div class="active-banner-slider owl-carousel">
                         <?php foreach ($produk as $p) { ?>
                         <!-- single-slide -->
                         <div class="row single-slide align-items-center d-flex">
@@ -289,73 +420,7 @@
                             </div>
                         </div>
                         <?php } ?>
-                        <!-- single-slide -->
-                        <!-- <div class="row single-slide align-items-center d-flex">
-                            <div class="col-lg-5 col-md-6">
-                                <div class="banner-content">
-                                    <h1>Dholpine Wangi <br>Lavender</h1>
-                                    <p>Dengan wangi bunga lavender, semakin ampuh melindungi kulit anda dari gigitan nyamuk
-                                        dan membuat kulit anda wangi seperti bunga lavender</p>
-                                    <div class="add-bag d-flex align-items-center">
-                                        <a class="add-btn" href=""><span class="ti-shopping-cart"></span></a>
-                                        <span class="add-text text-uppercase">Add to Cart</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="banner-img">
-                                    <img class="img-fluid" src="<?= base_url('assets/') ?>images/banner/gambar_3.png" alt="">
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- single-slide -->
-                        <!-- <div class="row single-slide">
-                            <div class="col-lg-5">
-                                <div class="banner-content">
-                                    <h1>Dholpine Wangi<br>Apel</h1>
-                                    <p>Dengan wangi apel, semakin ampuh melindungi kulit anda dari gigitan nyamuk
-                                        dan membuat kulit anda wangi seperti apel</p>
-                                    <div class="add-bag d-flex align-items-center">
-                                        <a class="add-btn" href=""><span class="ti-shopping-cart"></span></a>
-                                        <span class="add-text text-uppercase">Add to Cart</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="banner-img">
-                                    <img class="img-fluid" src="<?= base_url('assets/') ?>images/banner/gambar_2.png" alt="">
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- single-slide -->
-                        <!-- <div class="row single-slide">
-                            <div class="col-lg-5">
-                                <div class="banner-content">
-                                    <h1>Dholpine Wangi <br>Jeruk</h1>
-                                    <p>Dengan wangi jeruk, semakin ampuh melindungi kulit anda dari gigitan nyamuk
-                                        dan membuat kulit anda wangi seperti jeruk</p>
-                                    <div class="add-bag d-flex align-items-center">
-                                        <a class="add-btn" href=""><span class="ti-shopping-cart"></span></a>
-                                        <span class="add-text text-uppercase">Add to Cart</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="banner-img">
-                                    <img class="img-fluid" src="<?= base_url('assets/') ?>images/banner/gambar_1.png" alt="">
-                                </div>
-                            </div>
-                        </div> -->
-                        
                     </div>
-                    <!-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a> -->
                 </div>
             </div>
         </div>
@@ -363,8 +428,8 @@
     <!-- End banner Area -->
 
     <script src="<?= base_url('assets/') ?>js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="<?= base_url('assets/') ?>js/vendor/bootstrap.min.js"></script>
+    <script src="<?= base_url('assets/') ?>js/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="<?= base_url('assets/') ?>js/vendor/bootstrap.js"></script>
     <script src="<?= base_url('assets/') ?>js/jquery.ajaxchimp.min.js"></script>
     <script src="<?= base_url('assets/') ?>js/jquery.nice-select.min.js"></script>
     <script src="<?= base_url('assets/') ?>js/jquery.sticky.js"></script>
@@ -373,7 +438,7 @@
     <script src="<?= base_url('assets/') ?>js/jquery.magnific-popup.min.js"></script>
     <script src="<?= base_url('assets/') ?>js/owl.carousel.min.js"></script>
     <!--gmaps Js-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+    <script src="<?= base_url('assets/') ?>js/maps_googleapis.js"></script>
     <script src="<?= base_url('assets/') ?>js/gmaps.min.js"></script>
     <script src="<?= base_url('assets/') ?>js/main.js"></script>
 
@@ -383,49 +448,9 @@
             return false;
         }
 
-        function tambah(id, qty) {
-			$.ajax({
-				url : "<?= site_url('basket/keranjang_tambah');?>",
-				type : "POST",
-                data : {id: id, qty: qty},
-                dataType: "json",
-				success: function(){
-                    $('#modal_keranjang').modal("show");
-				}
-            });
-        }
-
-        $('#modal_keranjang').on("show.bs.modal", function() {
-            $.get("<?= site_url('basket/keranjang');?>", function(data) {
-                $('#table_body').empty(); 
-                if(data !== 'undefined' && data !== '') {
-                    tr = ''; no = 1;
-
-                    $.each(JSON.parse(data), function(key, value){
-                        tr = tr +
-                        "<tr>" +
-                            "<td>"+no+"</td>" +
-                            "<td>"+value.name+"</td>" +
-                            "<td>" +
-                                "<input type='hidden' name='rowid[]' value='"+value.rowid+"'>" +
-                                "<input type='number' name='qty[]' class='form-control' value='"+value.qty+"' min='0' max='10' size='3' maxlength='3'>" +
-                            "</td>" +
-                        "</tr>";
-                        no = no + 1;
-                    });
-
-                } else {
-                    tr = tr + "<tr><td colspan='3'><center>Keranjang Kosong.</center></td></tr>";
-                }
-                
-                $('#table_body').append(tr);
-            });
-        });
-
-        $('#form_keranjang').submit(function(event) { 
-            event.preventDefault();
+        function edit() {
             $.ajax({
-				url : "<?= site_url('basket/keranjang_edit');?>",
+				url : "<?= site_url('basket/edit');?>",
 				type : "POST",
                 data : $('#form_keranjang').serialize(),
                 dataType: "json",
@@ -463,23 +488,106 @@
                 alert(xhr.responseText);
                 console.log("error");
             });
+        }
+
+        function lihat(eye, pass) {
+            if (pass.attr('type') == 'text') {
+                eye.html('<span class="fa fa-eye-slash"></span>')
+                pass.attr('type', 'password');
+            } else {
+                eye.html('<span class="fa fa-eye"></span>')
+                pass.attr('type', 'text');
+            }
+        }
+
+        function tambah(id, qty) {
+			$.ajax({
+				url : "<?= site_url('basket/tambah');?>",
+				type : "POST",
+                data : {id: id, qty: qty},
+                dataType: "json",
+				success: function(){
+                    $('#modal_keranjang').modal("show");
+				}
+            });
+        }
+
+        $('#modal_keranjang').on("show.bs.modal", function(e) {
+            log = <?= json_encode($log) ?>;
+            if (log === false) {
+                alert("Harap Login Terlebih Dahulu!");
+                $('#modal_keranjang').on("shown.bs.modal", function(e) {
+                    $('#modal_keranjang').modal("hide");
+                    $('#modal_login').modal("show");
+                });
+            } else {
+                $.get("<?= site_url('basket/keranjang');?>", function(data) {
+                 
+                    tr = ''; no = 1;
+    
+                    if(data !== 'undefined' && data !== '') {
+    
+                        $('#table_body').empty();
+                        $.each(JSON.parse(data), function(key, value){
+                            tr = tr +
+                            "<tr>" +
+                                "<td valign='middle'>"+no+"</td>" +
+                                "<td valign='middle'>"+value.name+"</td>" +
+                                "<td valign='middle'>" +
+                                    "<input type='hidden' name='rowid[]' value='"+value.rowid+"'>" +
+                                    "<input type='number' name='qty[]' class='form-control' value='"+value.qty+"' min='0' max='10' size='3' maxlength='3'>" +
+                                "</td>" +
+                            "</tr>";
+                            no = no + 1;
+                        });
+    
+                    } else {
+                        tr = tr + "<tr><td colspan='3'><center>Keranjang Kosong.</center></td></tr>";
+                    }
+                    
+                    $('#table_body').append(tr);
+                });
+            }
+        });
+
+        $('#form_keranjang').submit(function(event) { 
+            event.preventDefault();
+            edit();
         });
 
         $('#bayar').click(function() { 
-            $('#modal_pesanan').modal("hide");
-            $('#modal_pembayaran').modal("show");  
+            if (confirm('Anda Yakin?')) {
+                $('#modal_pesanan').modal("hide");
+                $('#modal_pembayaran').modal("show");  
 
-            $.get("<?= site_url('basket/keranjang_bayar');?>", function(data) {
-                str = "Mohon segera lakukan pembayaran sebesar, <b>"+data+"</b>";
-                $("#transfer").html(str);alert(1);  
-            })
-            .fail(function(xhr, textStatus, errorThrown) {
-                alert(xhr.responseText);
-                console.log("error");
-            });
-            
+                $.get("<?= site_url('basket/bayar');?>", function(data) {
+                    str = "Mohon segera lakukan pembayaran sebesar, <b>Rp. "+data+",-</b>";
+                    $("#transfer").html(str);
+                })
+                .fail(function(xhr, textStatus, errorThrown) {
+                    alert(xhr.responseText);
+                    console.log("error");
+                    console.log(xhr.responseText);
+                });
+            } else {
+                $('#modal_pesanan').modal("hide");
+            }
         });
 
+        $('#eye_masuk').click(function() {
+            lihat($('#eye_masuk'), $('#password_masuk'));
+        });
+
+        $('#eye').click(function() {
+            lihat($('#eye'), $('#password'));
+        });
+
+        $(document).ready(function() {
+            notif = <?= json_encode((isset($this->session->notif)) ? true : false) ?>;
+            if (notif === true) {
+                alert(<?= json_encode($this->session->notif)?>);
+            }
+        });
     </script>
 
 </body>

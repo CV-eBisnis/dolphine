@@ -15,19 +15,19 @@ class Transaksi_model extends CI_Model
         return $this->db->get('transaksi')->result();
     }
 
-    public function select_where(Type $var = null)
+    public function select_where($param)
     {
-        # code...
+        return $this->db->get_where('transaksi', $param)->result();
     }
 
-    public function update(Type $var = null)
+    public function update($param, $id)
     {
-        # code...
+        return $this->db->update('transaksi', $param, $id);
     }
 
-    public function delete(Type $var = null)
+    public function delete($param)
     {
-        # code...
+        return $this->db->delete('transaksi', $param);
     }    
 }
 

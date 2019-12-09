@@ -40,7 +40,7 @@
            <!-- Main content -->
            <section class="content">
                 <div class="container-fluid">
-                    <table class="table">
+                    <table class="table" id="myTable">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -60,7 +60,7 @@
                                                 </button>
                                             </div>
                                             <?php  ?>
-                                            <form action="<?= site_url('admin/user_tambah') ?>" method="post">
+                                            <form action="<?= site_url('user/tambah') ?>" method="post">
                                                 <div class="modal-body">
                                                     <div class="form-group">
                                                         <label for="nama">Nama :</label>
@@ -86,8 +86,8 @@
                                                     <div class="form-group">
                                                         <label for="level">Level :</label>
                                                         <select class="form-control" name="level" id="level0">
-                                                            <option>Administrator</option>
-                                                            <option selected>User</option>
+                                                            <option value="admin">Administrator</option>
+                                                            <option value="user" selected>User</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -123,7 +123,7 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>                                                
-                                                    <form action="<?= site_url('admin/user_edit') ?>" method="post">
+                                                    <form action="<?= site_url('user/edit') ?>" method="post">
                                                         <div class="modal-body">
                                                             <div class="form-group">
                                                                 <label for="id_user"><b>ID User : <?= $u->id_user ?></b></label>
@@ -148,13 +148,13 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="password"><b>Password :</b></label>
-                                                                <input type="password" class="form-control" name="password" id="password<?= $u->id_user ?>" placeholder="Masukkan Password ..." value="<?= $u->password ?>" required minlength="8">
+                                                                <input type="password" class="form-control" name="password" id="password<?= $u->id_user ?>" placeholder="Masukkan Password ..." value="<?= $this->encryption->decrypt($u->password) ?>" required minlength="8">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="level">Level :</label>
                                                                 <select class="form-control" name="level" id="level<?= $u->id_user ?>">
-                                                                    <option <?php if($u->level==1) echo 'selected' ?> value="1">Administrator</option>
-                                                                    <option <?php if($u->level==2) echo 'selected' ?> value="2">User</option>
+                                                                    <option <?php if($u->level=='admin') echo 'selected' ?> value="admin">Administrator</option>
+                                                                    <option <?php if($u->level=='user') echo 'selected' ?> value="user">User</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -166,7 +166,7 @@
                                             </div>
                                         </div>
 
-                                        <a href="<?= site_url('admin/user_hapus/' . $u->id_user) ?>" class="btn btn-danger" onclick="return confirm('Hapus User?')"><i class="fa fa-trash"></i></a>
+                                        <a href="<?= site_url('user/hapus/' . $u->id_user) ?>" class="btn btn-danger" onclick="return confirm('Hapus User?')"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php } ?>
