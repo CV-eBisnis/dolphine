@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= site_url('admin/user') ?>" class="nav-link">
+                    <a href="<?= site_url('user') ?>" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Data User

@@ -40,7 +40,7 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                    <table class="table">
+                    <table class="table" id="myTable">
                         <thead>
                             <tr>
                                 <th>No.</th>

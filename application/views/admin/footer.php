@@ -49,3 +49,15 @@
 <script src="<?= base_url('assets/admin/')?>dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url('assets/admin/')?>dist/js/demo.js"></script>
+<!-- DataTables -->
+<script type="text/javascript" src="<?= base_url('assets/')?>DataTables/datatables.min.js"></script>
+
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable();
+        notif = <?= json_encode((isset($this->session->notif)) ? true : false) ?>;
+        if (notif === true) {
+            alert(<?= json_encode($this->session->notif)?>);
+        }
+    });
+</script>

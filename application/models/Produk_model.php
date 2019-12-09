@@ -14,6 +14,11 @@ class Produk_model extends CI_Model
         return $this->db->get('produk')->result();
     }
 
+    public function select_row($param)
+    {
+        return $this->db->get_where('produk', $param)->row();
+    }
+
     public function select_where($param)
     {
         return $this->db->get_where('produk', $param)->result();

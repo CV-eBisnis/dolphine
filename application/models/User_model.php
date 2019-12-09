@@ -19,14 +19,19 @@ class User_model extends CI_Model
         return $this->db->get_where('user', $param)->result();
     }
 
+    public function select_row($param)
+    {
+        return $this->db->get_where('user', $param)->row();
+    }
+
     public function update($param, $id)
     {
         return $this->db->update('user', $param, $id);
     }
 
-    public function delete($id)
+    public function delete($param)
     {
-        return $this->db->delete('user', $id);
+        return $this->db->delete('user', $param);
     }
 }
 
