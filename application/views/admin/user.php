@@ -61,6 +61,7 @@
                                             </div>
                                             <?php  ?>
                                             <form action="<?= site_url('user/tambah') ?>" method="post">
+                                                <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                                 <div class="modal-body">
                                                     <div class="form-group">
                                                         <label for="nama">Nama :</label>
@@ -124,6 +125,7 @@
                                                         </button>
                                                     </div>                                                
                                                     <form action="<?= site_url('user/edit') ?>" method="post">
+                                                        <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                                         <div class="modal-body">
                                                             <div class="form-group">
                                                                 <label for="id_user"><b>ID User : <?= $u->id_user ?></b></label>
