@@ -45,8 +45,8 @@
         }
     </style>
 </head>
-
-<body>
+<!-- <body> -->
+<body oncontextmenu="return false;">
 <?php $log = (isset($user->nama)) ? true : false ?>
     <!-- Start Header Area -->
     <header class="header_area sticky-header">
@@ -428,7 +428,7 @@
     <!-- End banner Area -->
 
     <script src="<?= base_url('assets/') ?>js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="<?= base_url('assets/') ?>js/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="<?= base_url('assets/') ?>js/popper.min.js" crossorigin="anonymous"></script>
     <script src="<?= base_url('assets/') ?>js/vendor/bootstrap.js"></script>
     <script src="<?= base_url('assets/') ?>js/jquery.ajaxchimp.min.js"></script>
     <script src="<?= base_url('assets/') ?>js/jquery.nice-select.min.js"></script>
@@ -482,6 +482,7 @@
                         tr = tr + "<tr><td colspan='3'><b>Total :</b></td><td>"+total+"</td></tr>";
                         $('#table_pesanan').append(tr);
                     });
+                    // location.reload();
 				}
             })
             .fail(function(xhr, textStatus, errorThrown) {
@@ -504,9 +505,10 @@
 			$.ajax({
 				url : "<?= site_url('basket/tambah');?>",
 				type : "POST",
-                data : {id: id, qty: qty},
+                data : {id: id, qty: qty, <?= json_encode($this->security->get_csrf_token_name()) ?> : <?= json_encode($this->security->get_csrf_hash()) ?>},
                 dataType: "json",
 				success: function(){
+                    // location.reload();
                     $('#modal_keranjang').modal("show");
 				}
             });
@@ -551,8 +553,8 @@
         });
 
         $('#form_keranjang').submit(function(event) { 
-            event.preventDefault();
             edit();
+            event.preventDefault();
         });
 
         $('#bayar').click(function() { 

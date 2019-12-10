@@ -7,7 +7,7 @@ class User extends CI_Controller {
     {
         $data['user'] = $this->User_model->select();
 
-        $this->load->view('admin/user');
+        $this->load->view('admin/user', $data);
     }
 
     public function tambah()
