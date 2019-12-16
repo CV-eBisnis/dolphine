@@ -46,7 +46,7 @@
     </style>
 </head>
 <!-- <body> -->
-<body oncontextmenu="return false;">
+<body>
 <?php $log = (isset($user->nama)) ? true : false ?>
     <!-- Start Header Area -->
     <header class="header_area sticky-header">
@@ -341,7 +341,7 @@
                         </table>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Update & Lanjutkan</button>
+                        <button type="submit" class="btn btn-primary" id="updateLanjutkan">Update & Lanjutkan</button>
                     </div>
                 </form>
             </div>
@@ -473,9 +473,11 @@
                     $('#modal_pesanan').modal("show");
 
                     $.get("<?= site_url('basket/keranjang');?>", function(data) {
-                        $('#table_pesanan').empty(); 
-                        if(data !== 'undefined' && data !== '') {
-                            tr = ''; no = 1; harga = 0; total = 0;
+                        tr = ''; no = 1; harga = 0; total = 0;
+                        $('#table_pesanan').empty();
+
+                        if(JSON.parse(data).length !== 0) {
+                            $('#bayar').prop('disabled', false);
                             
                             $.each(JSON.parse(data), function(key, value){
                                 harga = value.qty * value.price;
@@ -492,6 +494,7 @@
 
                         } else {
                             tr = tr + "<tr><td colspan='4'><center>Keranjang Kosong.</center></td></tr>";
+                            $('#bayar').prop('disabled', true);
                         }
                         tr = tr + "<tr><td colspan='3'><b>Total :</b></td><td>"+total+"</td></tr>";
                         $('#table_pesanan').append(tr);
@@ -539,10 +542,9 @@
                 $.get("<?= site_url('basket/keranjang');?>", function(data) {
                  
                     tr = ''; no = 1;
-    
-                    if(data !== 'undefined' && data !== '') {
-    
-                        $('#table_body').empty();
+                    $('#table_body').empty();
+
+                    if(JSON.parse(data).length !== 0) {
                         $.each(JSON.parse(data), function(key, value){
                             tr = tr +
                             "<tr>" +
@@ -554,10 +556,18 @@
                                 "</td>" +
                             "</tr>";
                             no = no + 1;
+
+                            if (no == 1) {
+                                
+                            } else {
+                                
+                            }
                         });
-    
+
+                        $('#updateLanjutkan').prop('disabled', false);
                     } else {
                         tr = tr + "<tr><td colspan='3'><center>Keranjang Kosong.</center></td></tr>";
+                        $('#updateLanjutkan').prop('disabled', true);
                     }
                     
                     $('#table_body').append(tr);
