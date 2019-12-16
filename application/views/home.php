@@ -109,7 +109,6 @@
                         <!-- Panel Masuk -->
                         <div class="tab-pane fade in show active" id="tab_masuk" role="tabpanel">
                             <form action="<?= site_url('home/login') ?>" method="post">
-                                <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="email">Email :</label>
@@ -134,7 +133,6 @@
                         <!-- Panel Daftar -->
                         <div class="tab-pane fade in" id="tab_daftar" role="tabpanel">
                             <form action="<?= site_url('home/daftar') ?>" method="post">
-                                <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="nama">Nama :</label>
@@ -191,11 +189,11 @@
                                         Riwayat
                                     </a>
                                 </li>
-                                <!-- <li class="nav-item">
+                                <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#pengiriman" role="tab">
                                         Pengiriman
                                     </a>
-                                </li> -->
+                                </li>
                             </ul>
                         </h5>
 
@@ -210,7 +208,6 @@
                         <!-- Panel User -->
                         <div class="tab-pane fade in show active" id="profil" role="tabpanel">
                             <form action="<?= site_url('user/edit') ?>" method="post">
-                                <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <input type="hidden" class="form-control" name="id_user" id="id_user<?= $user->id_user ?>" value="<?= $user->id_user ?>">
@@ -282,7 +279,26 @@
                         <div class="tab-pane fade in" id="pengiriman" role="tabpanel">
                             <div class="modal-body">
                                 <table class="table">
-                                    
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Pengiriman</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $no = 0; foreach ($transaksi as $trans => $t) { $no++; ?>
+                                        <tr>
+                                            <td><?= $no ?></td>
+                                            <td>
+                                                <?php $j = 1; foreach ($products[$trans] as $pro => $p) { if ($j>1) { echo "<br>"; } echo "- ".$p." (".$jumlah[$trans][$pro]." buah)"; $j++; } ?>
+                                            </td>
+                                            <td>
+                                                <b><?= strtoupper($pengiriman[$trans][0]->status_pengiriman) ?></b>
+                                            </td>
+                                        </tr>
+                                        <?php } ?>
+                                    </tbody>
                                 </table>
                             </div>
                             <div class="modal-footer">
@@ -303,7 +319,6 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form action="<?= site_url() ?>" method="post" id="form_keranjang">
-                    <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                     <div class="modal-header">
                         <h5 class="modal-title">Keranjang Belanja</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -505,10 +520,9 @@
 			$.ajax({
 				url : "<?= site_url('basket/tambah');?>",
 				type : "POST",
-                data : {id: id, qty: qty, <?= json_encode($this->security->get_csrf_token_name()) ?> : <?= json_encode($this->security->get_csrf_hash()) ?>},
+                data : {id: id, qty: qty},
                 dataType: "json",
 				success: function(){
-                    // location.reload();
                     $('#modal_keranjang').modal("show");
 				}
             });

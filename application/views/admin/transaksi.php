@@ -82,7 +82,7 @@
                             <?php } ?>
                         </tbody>
                     </table>
-                    <b>Cetak Laporan : </b><a href="<?=site_url('admin/laporan') ?>" class="btn btn-light"><i class="fa fa-print"></i></a>
+                    <b>Cetak Laporan : </b><a href="<?=site_url('admin/transaksi_laporan') ?>" class="btn btn-light"><i class="fa fa-print"></i></a>
                 </div><!--/. container-fluid -->
             </section>
             <!-- /.content -->
