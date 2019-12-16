@@ -15,6 +15,11 @@ class Transaksi_model extends CI_Model
         return $this->db->get('transaksi')->result();
     }
 
+    public function select_row($param)
+    {
+        return $this->db->get_where('transaksi', $param)->row();
+    }
+
     public function select_where($param)
     {
         return $this->db->get_where('transaksi', $param)->result();

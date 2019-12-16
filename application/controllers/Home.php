@@ -13,7 +13,7 @@ class Home extends CI_Controller
 
             $transaksi = $this->Transaksi_model->select_where($id);
         
-            $data_produk = []; $data_jum = [];
+            $data_produk = []; $data_jum = []; $data_pengiriman = [];
 
             foreach ($transaksi as $t) {
                 $detail = $this->Detail_model->select_where(['id_transaksi' => $t->id_transaksi]);
@@ -32,9 +32,13 @@ class Home extends CI_Controller
                 array_push($data_produk, $produks);
 
                 array_push($data_jum, $jums);
+
+                $pengiriman = $this->Pengiriman_model->select_where(['id_transaksi' => $t->id_transaksi]);
+                array_push($data_pengiriman, $pengiriman);
             }
             
             $data['transaksi'] = $transaksi;
+            $data['pengiriman'] = $data_pengiriman;
             $data['products'] = $data_produk;
             $data['jumlah'] = $data_jum;
         }

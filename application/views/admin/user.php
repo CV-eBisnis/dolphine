@@ -61,7 +61,6 @@
                                             </div>
                                             <?php  ?>
                                             <form action="<?= site_url('user/tambah') ?>" method="post">
-                                                <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                                 <div class="modal-body">
                                                     <div class="form-group">
                                                         <label for="nama">Nama :</label>
@@ -119,13 +118,12 @@
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>                                                
                                                     <form action="<?= site_url('user/edit') ?>" method="post">
-                                                        <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                                         <div class="modal-body">
                                                             <div class="form-group">
                                                                 <label for="id_user"><b>ID User : <?= $u->id_user ?></b></label>

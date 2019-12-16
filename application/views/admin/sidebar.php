@@ -43,7 +43,15 @@
                             Data Transaksi
                         </p>
                     </a>
-                </li>  
+                </li>
+                <li class="nav-item">
+                    <a href="<?= site_url('admin/pengiriman') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-truck"></i>
+                        <p>
+                            Data Pengiriman
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2019 at 03:13 AM
+-- Generation Time: Dec 16, 2019 at 05:23 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -50,6 +50,27 @@ INSERT INTO `detail` (`id_detail`, `id_produk`, `jumlah_pembelian`, `id_transaks
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pengiriman`
+--
+
+CREATE TABLE `pengiriman` (
+  `id_pengiriman` int(11) NOT NULL,
+  `id_transaksi` int(11) NOT NULL,
+  `status_pengiriman` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pengiriman`
+--
+
+INSERT INTO `pengiriman` (`id_pengiriman`, `id_transaksi`, `status_pengiriman`) VALUES
+(1, 1, 'Diterima'),
+(2, 8, 'Dikemas'),
+(3, 9, 'Dikemas');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `produk`
 --
 
@@ -91,9 +112,9 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id_transaksi`, `id_user`, `tanggal`, `biaya`, `kode_unik`, `total_bayar`, `status_bayar`) VALUES
-(1, 2, '2019-12-05', 30000, 75, 30075, 0),
+(1, 2, '2019-12-05', 30000, 75, 30075, 1),
 (8, 3, '2019-12-09', 14000, 44, 14044, 1),
-(9, 3, '2019-12-09', 19000, 94, 19094, 0);
+(9, 3, '2019-12-09', 19000, 94, 19094, 1);
 
 -- --------------------------------------------------------
 
@@ -130,6 +151,12 @@ ALTER TABLE `detail`
   ADD PRIMARY KEY (`id_detail`);
 
 --
+-- Indexes for table `pengiriman`
+--
+ALTER TABLE `pengiriman`
+  ADD PRIMARY KEY (`id_pengiriman`);
+
+--
 -- Indexes for table `produk`
 --
 ALTER TABLE `produk`
@@ -157,6 +184,11 @@ ALTER TABLE `user`
 ALTER TABLE `detail`
   MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
+-- AUTO_INCREMENT for table `pengiriman`
+--
+ALTER TABLE `pengiriman`
+  MODIFY `id_pengiriman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
@@ -170,7 +202,7 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

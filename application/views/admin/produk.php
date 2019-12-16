@@ -62,7 +62,6 @@
                                             </div>
                                             <?php  ?>
                                             <form action="<?= site_url('admin/produk_tambah') ?>" method="post" enctype="multipart/form-data">
-                                                <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                                 <div class="modal-body">
                                                     <div class="form-group">
                                                         <label for="nama_produk">Nama Produk :</label>
@@ -139,7 +138,6 @@
                                                         </button>
                                                     </div>
                                                     <form action="<?= site_url('admin/produk_edit') ?>" method="post" enctype="multipart/form-data">
-                                                        <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                                         <div class="modal-body">
                                                             <div class="form-group">
                                                                 <label for="id_produk"><b>ID Produk : <?= $p->id_produk ?></b></label>
