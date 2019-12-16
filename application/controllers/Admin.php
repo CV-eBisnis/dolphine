@@ -212,33 +212,49 @@ class Admin extends CI_Controller
     {
         $transaksi = $this->Transaksi_model->select();
         
-        $namas = []; $data_produk = []; $data_jum = [];
+        $data_transaksi = []; $namas = []; $data_produk = []; $data_jum = [];
 
         foreach ($transaksi as $t) {
-            $id_nama['id_user'] = $t->id_user;
-            $nama = $this->User_model->select_row($id_nama)->nama;
-            array_push($namas, $nama);
+            $exist = true;
 
+            $id_nama['id_user'] = $t->id_user;
+            $nama = $this->User_model->select_row($id_nama);
+            if ($nama == null) {
+                $exist = false;
+            } else {
+                $nama = $this->User_model->select_row($id_nama)->nama;
+            }
+            
             $detail = $this->Detail_model->select_where(['id_transaksi' => $t->id_transaksi]);
+            if ($detail == null) { $exist = false; }
 
             $produks = []; $jums = [];
 
             foreach ($detail as $d) {
                 $id_produk['id_produk'] = $d->id_produk;
-                $produk = $this->Produk_model->select_row($id_produk)->nama_produk;
+                $produk = $this->Produk_model->select_row($id_produk);
+                if($produk == null) { 
+                    $exist = false; 
+                } else {
+                    $produk = $this->Produk_model->select_row($id_produk)->nama_produk;
+                }
                 array_push($produks, $produk);
 
                 $jum = $d->jumlah_pembelian;
+                if($jum == null) { $exist = false; }
                 array_push($jums, $jum);
             }
 
-            array_push($data_produk, $produks);
-
-            array_push($data_jum, $jums);
+            if ($exist == true) {
+                array_push($data_transaksi, $t);
+                array_push($namas, $nama);
+                array_push($data_produk, $produks);
+                array_push($data_jum, $jums);
+            }
         }
         
         $data = [
-            'transaksi' => $transaksi,
+            'transaksi' => $data_transaksi,
             'nama'      => $namas,
             'produk'    => $data_produk,
             'jumlah'    => $data_jum
@@ -249,32 +265,46 @@ class Admin extends CI_Controller
 
     public function getPengiriman()
     {
-        $data_pengiriman = $this->Pengiriman_model->select();
-        $data_transaksi = []; $data_user = []; $data_produk = []; $data_jumlah = [];
+        $pengiriman = $this->Pengiriman_model->select();
+        $data_pengiriman = []; $data_transaksi = []; $data_user = []; $data_produk = []; $data_jumlah = [];
 
-        foreach ($data_pengiriman as $p) {
+        foreach ($pengiriman as $p) {
+            $exist = true;
+
             $transaksi = $this->Transaksi_model->select_row(['id_transaksi' => $p->id_transaksi]);
-            array_push($data_transaksi, $transaksi);
-
-            $user = $this->User_model->select_row(['id_user' => $transaksi->id_user]);
-            array_push($data_user, $user);
+            if ($transaksi == null) { 
+                $exist = false; 
+            } else {
+                $user = $this->User_model->select_row(['id_user' => $transaksi->id_user]);
+                if ($user == null) { $exist = false; }
+            }
 
             $detail = $this->Detail_model->select_where(['id_transaksi' => $p->id_transaksi]);
+            if ($detail == null) { $exist = false; }
 
             $produks = []; $jumlahs = [];
 
             foreach ($detail as $d) {
                 $id_produk['id_produk'] = $d->id_produk;
-                $produk = $this->Produk_model->select_row($id_produk)->nama_produk;
+                $produk = $this->Produk_model->select_row($id_produk);
+                if($produk == null) { 
+                    $exist = false; 
+                } else {
+                    $produk = $this->Produk_model->select_row($id_produk)->nama_produk;
+                }
                 array_push($produks, $produk);
 
                 $jumlah = $d->jumlah_pembelian;
                 array_push($jumlahs, $jumlah);
             }
 
-            array_push($data_produk, $produks);
-
-            array_push($data_jumlah, $jumlahs);
+            if ($exist == true) {
+                array_push($data_pengiriman, $p);
+                array_push($data_transaksi, $transaksi);
+                array_push($data_user, $user);
+                array_push($data_produk, $produks);
+                array_push($data_jumlah, $jumlahs);
+            }
         }
 
         $data = [

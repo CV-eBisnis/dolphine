@@ -186,7 +186,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#riwayat" role="tab">
-                                        Riwayat
+                                        Transaksi
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -249,7 +249,7 @@
                                         <th>No.</th>
                                         <th>Tanggal</th>
                                         <th>Barang</th>
-                                        <th>Total Bayar (Rp.)</th>
+                                        <th>Total (Rp.)</th>
                                         <th>Lunas</th>
                                     </tr>
                                 </thead>
@@ -261,7 +261,8 @@
                                         <td><?= $no ?></td>
                                         <td><?= date('j/m/Y', strtotime($t->tanggal)) ?></td>
                                         <td>
-                                            <?php $j = 1; foreach ($products[$trans] as $pro => $p) { if ($j>1) { echo "<br>"; } echo "- ".$p." (".$jumlah[$trans][$pro]." buah)"; $j++; } ?>
+                                            <?php $j = 1; foreach ($products[$trans] as $pro => $p) { if ($j>1) { 
+                                                echo "<br>"; } echo "- ".$p." (".$jumlah[$trans][$pro]." buah)"; $j++; } ?>
                                         </td>
                                         <td><?= number_format($t->total_bayar,0,",",".") ?>,-</td>
                                         <td class="text-center"><?php echo "<b>".(($t->status_bayar) ? "LUNAS" : "-=PROSES=-")."</b>"; ?></td>
@@ -271,7 +272,6 @@
                             </table>
                             </div>
                             <div class="modal-footer">
-                                <button type="simpan" class="btn btn-primary">Simpan</button>
                             </div>
                         </div>
 
@@ -287,7 +287,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $no = 0; foreach ($transaksi as $trans => $t) { $no++; ?>
+                                        <?php $no = 0; foreach ($transaksi as $trans => $t) { if(array_key_exists(0, $pengiriman[$trans])) { if($t->id_transaksi==$pengiriman[$trans][0]->id_transaksi) { $no++; ?>
                                         <tr>
                                             <td><?= $no ?></td>
                                             <td>
@@ -297,12 +297,11 @@
                                                 <b><?= strtoupper($pengiriman[$trans][0]->status_pengiriman) ?></b>
                                             </td>
                                         </tr>
-                                        <?php } ?>
+                                        <?php } } } ?>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="modal-footer">
-                                <button type="simpan" class="btn btn-primary">Simpan</button>
                             </div>
                         </div>
 

@@ -8,36 +8,53 @@ class Home extends CI_Controller
         $data['produk'] = $this->Produk_model->select();
 
         if (isset($this->session->id_user)) {
+            $exist_detail = true; $exist_product = true; $exist_pengiriman = true;
+
             $id['id_user'] = $this->session->id_user;
             $data['user'] = $this->User_model->select_row($id);
 
             $transaksi = $this->Transaksi_model->select_where($id);
         
-            $data_produk = []; $data_jum = []; $data_pengiriman = [];
+            $data_transaksi = []; $data_produk = []; $data_jum = []; $data_pengiriman = [];
 
             foreach ($transaksi as $t) {
                 $detail = $this->Detail_model->select_where(['id_transaksi' => $t->id_transaksi]);
+                if ($detail == null) {
+                    $exist_detail = false;
+                } else {
+                    $produks = []; $jums = [];
 
-                $produks = []; $jums = [];
+                    foreach ($detail as $d) {
+                        $id_produk['id_produk'] = $d->id_produk;
+                        $produk = $this->Produk_model->select_row($id_produk);
+                        if($produk == null) { 
+                            $exist_product = false; 
+                        } else {
+                            $produk = $this->Produk_model->select_row($id_produk)->nama_produk;
+                        }
+                        array_push($produks, $produk);
 
-                foreach ($detail as $d) {
-                    $id_produk['id_produk'] = $d->id_produk;
-                    $produk = $this->Produk_model->select_row($id_produk)->nama_produk;
-                    array_push($produks, $produk);
-
-                    $jum = $d->jumlah_pembelian;
-                    array_push($jums, $jum);
+                        $jum = $d->jumlah_pembelian;
+                        array_push($jums, $jum);
+                    }
                 }
-
-                array_push($data_produk, $produks);
-
-                array_push($data_jum, $jums);
-
+                
                 $pengiriman = $this->Pengiriman_model->select_where(['id_transaksi' => $t->id_transaksi]);
-                array_push($data_pengiriman, $pengiriman);
+                
+                if ($exist_detail == true) {
+                    if ($exist_product == true) {
+                        array_push($data_transaksi, $t);
+                        array_push($data_produk, $produks);
+                        array_push($data_jum, $jums);
+    
+                        if ($exist_pengiriman == true) {
+                            array_push($data_pengiriman, $pengiriman);
+                        }
+                    }
+                }
             }
-            
-            $data['transaksi'] = $transaksi;
+
+            $data['transaksi'] = $data_transaksi;
             $data['pengiriman'] = $data_pengiriman;
             $data['products'] = $data_produk;
             $data['jumlah'] = $data_jum;
