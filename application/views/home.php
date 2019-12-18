@@ -419,8 +419,7 @@
                             <div class="col-lg-5 col-md-6">
                                 <div class="banner-content">
                                     <h1><?= $p->nama_produk ?></h1>
-                                    <p>Dengan wangi bunga <?= $p->varian_produk ?>, semakin ampuh melindungi kulit anda dari gigitan nyamuk
-                                        dan membuat kulit anda wangi seperti bunga <?= $p->varian_produk ?></p>
+                                    <p>Dengan wangi bunga <?= $p->varian_produk ?>, semakin ampuh melindungi kulit anda dari gigitan nyamuk dan membuat kulit anda wangi seperti bunga <?= $p->varian_produk ?></p>
                                     <div class="add-bag d-flex align-items-center">
                                         <a class="add-btn" href="" onclick="return beli(<?= $p->id_produk ?>)"><span class="ti-shopping-cart"></span></a>
                                         <span class="add-text text-uppercase">Beli</span>
