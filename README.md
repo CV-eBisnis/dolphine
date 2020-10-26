@@ -2,4 +2,4 @@
 E-Commerce Dolphine
 
 ## Preview
-(web dolphine.png)
+![web](web dolphine.png)
